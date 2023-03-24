@@ -1,12 +1,12 @@
 {
-    'name': "dom",
+    'name': "Doctor's Office Management",
     'summary': """
         Doctor's Office Management
     """,
     'description': "",
     'author': "javibits <javibits.io@gmail.com>",
     'website': "",
-    'category': 'Medical Practice Management',
+    'category': 'Services/Health',
     'version': '0.1',
     'depends': ['base'],
     'data': [
@@ -16,5 +16,6 @@
     ],
     'demo': [
     ],
-    'license': 'AGPL-3'
+    'license': 'AGPL-3',
+    "application": True,
 }
