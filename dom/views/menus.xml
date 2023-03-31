@@ -1,0 +1,8 @@
+<odoo>
+  <data>
+    <!-- Top menu items -->
+    <menuitem id="main_menu" name="DOM" />
+
+    <menuitem id="patient_menu" name="Medical Patients" parent="main_menu" action="patient_action"/>
+  </data>
+</odoo>
