@@ -2,7 +2,7 @@
 
     <!-- Search View -->
     <record id="patient_view_search" model="ir.ui.view">
-      <field name="name">patient.view.search</field>
+      <field name="name">dom.patient.view.search</field>
       <field name="model">res.partner</field>
       <field name="arch" type="xml">
         <search>
