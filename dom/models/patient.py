@@ -10,6 +10,7 @@ class Patient(models.Model):
             _("Identification number must be unique."),
         ),
     ]
+
     id_number = fields.Char(string=_("ID Number"), required=True)
     dob = fields.Date(string=_("Birthdate"), required=True)
     age = fields.Integer(string=_("Age"), compute="_compute_age", store=True)
@@ -46,11 +47,11 @@ class Patient(models.Model):
         compute="_compute_personal_history_ids",
         inverse="_inverse_personal_history_ids",
     )
-    relative_history_ids = fields.One2many(
+    family_history_ids = fields.One2many(
         "dom.patient.history",
         "patient_id",
-        compute="_compute_relative_history_ids",
-        inverse="_inverse_relative_history_ids",
+        compute="_compute_family_history_ids",
+        inverse="_inverse_family_history_ids",
     )
     psychobiological_habits_history_ids = fields.One2many(
         "dom.patient.history",
@@ -93,12 +94,12 @@ class Patient(models.Model):
         self._inverse_history_ids("personal")
 
     @api.depends("history_ids")
-    def _compute_relative_history_ids(self):
-        self._compute_history_ids("relative")
+    def _compute_family_history_ids(self):
+        self._compute_history_ids("family")
 
     @api.depends("history_ids")
-    def _inverse_relative_history_ids(self):
-        self._inverse_history_ids("relative")
+    def _inverse_family_history_ids(self):
+        self._inverse_history_ids("family")
 
     @api.depends("history_ids")
     def _compute_psychobiological_habits_history_ids(self):

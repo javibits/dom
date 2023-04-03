@@ -65,50 +65,57 @@
                   <page name="personal_history" string="Personal">
                     <field name="personal_history_ids" context="{'default_type': 'personal'}">
                       <tree editable="bottom">
+                          <field name="type" invisible="1"/>
                           <field name="write_date"/>
                           <field name="name"/>
-                          <field name="type" invisible="1"/>
                           <field name="note"/>
+                          <field name="important" widget="boolean_toggle"/>
                       </tree>
                     </field>
                   </page>
-                  <page name="relative_history" string="Relative">
-                    <field name="relative_history_ids" context="{'default_type': 'relative'}">
+                  <page name="family_history" string="Family">
+                    <field name="family_history_ids" context="{'default_type': 'family'}">
                       <tree editable="bottom">
-                          <field name="write_date"/>
-                          <field name="name"/>
                           <field name="type" invisible="1"/>
+                          <field name="write_date"/>
+                          <field name="family_id" required="True"/>
+                          <field name="name"/>
                           <field name="note"/>
+                          <field name="family_deceased" widget="boolean_toggle"/>
+                          <field name="important" widget="boolean_toggle"/>
                       </tree>
                     </field>
                   </page>
                   <page name="psychobiological_habits_history" string="Psychobiological Habits">
                     <field name="psychobiological_habits_history_ids" context="{'default_type': 'psychobiological_habits'}">
                       <tree editable="bottom">
+                          <field name="type" invisible="1"/>
                           <field name="write_date"/>
                           <field name="name"/>
-                          <field name="type" invisible="1"/>
                           <field name="note"/>
+                          <field name="important" widget="boolean_toggle"/>
                       </tree>
                     </field>
                   </page>
                   <page name="sexual_activity_history" string="Sexual Activity">
                     <field name="sexual_activity_history_ids" context="{'default_type': 'sexual_activity'}">
                       <tree editable="bottom">
+                          <field name="type" invisible="1"/>
                           <field name="write_date"/>
                           <field name="name"/>
-                          <field name="type" invisible="1"/>
                           <field name="note"/>
+                          <field name="important" widget="boolean_toggle"/>
                       </tree>
                     </field>
                   </page>
                   <page name="other_history" string="Other">
                     <field name="other_history_ids" context="{'default_type': 'other'}">
                       <tree editable="bottom">
+                          <field name="type" invisible="1"/>
                           <field name="write_date"/>
                           <field name="name"/>
-                          <field name="type" invisible="1"/>
                           <field name="note"/>
+                          <field name="important" widget="boolean_toggle"/>
                       </tree>
                     </field>
                   </page>
