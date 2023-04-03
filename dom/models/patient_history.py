@@ -1,24 +1,46 @@
 from odoo import _, fields, models
 
 
+HISTORY_TYPE_SELECTION_VALUES = [
+    ("personal", _("Personal")),
+    ("family", _("Family")),
+    ("psychobiological_habits", _("Psychobiological Habits")),
+    ("sexual_activity", _("Sexual Activity")),
+    ("other", _("Other")),
+]
+
+
+class PatientHistoryItem(models.Model):
+    _name = "dom.patient.history.item"
+    _description = "Patient History Item"
+    _rec_name = "item"
+
+    item = fields.Char(string=_("Item"))
+    type = fields.Selection(
+        HISTORY_TYPE_SELECTION_VALUES,
+        string=_("Type"),
+        required=True,
+    )
+
+
 class PatientHistory(models.Model):
     _name = "dom.patient.history"
     _description = "Patient History"
+    _rec_name = "item_id"
 
-    name = fields.Char(string=_("Name"))
+    item_id = fields.Many2one(
+        "dom.patient.history.item",
+        string=_("Name"),
+        ondelete="restrict",
+    )
+
     patient_id = fields.Many2one(
         "res.partner",
         string=_("Patient"),
         ondelete="cascade",
     )
     type = fields.Selection(
-        [
-            ("personal", _("Personal")),
-            ("family", _("Family")),
-            ("psychobiological_habits", _("Psychobiological Habits")),
-            ("sexual_activity", _("Sexual Activity")),
-            ("other", _("Other")),
-        ],
+        HISTORY_TYPE_SELECTION_VALUES,
         string=_("Type"),
         required=True,
     )

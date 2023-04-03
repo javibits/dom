@@ -67,7 +67,7 @@
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
-                          <field name="name"/>
+                          <field name="item_id" string="Item" domain="[('type','in',('personal','family'))]" context="{'default_type': 'personal'}"/>
                           <field name="note"/>
                           <field name="important" widget="boolean_toggle"/>
                       </tree>
@@ -79,7 +79,7 @@
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
                           <field name="family_id" required="True"/>
-                          <field name="name"/>
+                          <field name="item_id" string="Item" domain="[('type','in',('personal','family'))]" context="{'default_type': 'family'}"/>
                           <field name="note"/>
                           <field name="family_deceased" widget="boolean_toggle"/>
                           <field name="important" widget="boolean_toggle"/>
@@ -91,7 +91,7 @@
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
-                          <field name="name"/>
+                          <field name="item_id" string="Item" domain="[('type','=','psychobiological_habits')]" context="{'default_type': 'psychobiological_habits'}"/>
                           <field name="note"/>
                           <field name="important" widget="boolean_toggle"/>
                       </tree>
@@ -102,7 +102,7 @@
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
-                          <field name="name"/>
+                          <field name="item_id" string="Item" domain="[('type','=','sexual_activity')]" context="{'default_type': 'sexual_activity'}"/>
                           <field name="note"/>
                           <field name="important" widget="boolean_toggle"/>
                       </tree>
@@ -113,7 +113,7 @@
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
-                          <field name="name"/>
+                          <field name="item_id" string="Item" domain="[('type','=','other')]" context="{'default_type': 'other'}"/>
                           <field name="note"/>
                           <field name="important" widget="boolean_toggle"/>
                       </tree>
