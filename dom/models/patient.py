@@ -3,6 +3,7 @@ from odoo import _, api, fields, models
 
 class Patient(models.Model):
     _inherit = "res.partner"
+    _order = "sequence asc"
     _sql_constraints = [
         (
             "dom_patient_id_unique",
@@ -11,6 +12,12 @@ class Patient(models.Model):
         ),
     ]
 
+    sequence = fields.Char(
+        string=_("Patient #"),
+        required=True,
+        readonly=True,
+        default="P0000",
+    )
     id_number = fields.Char(string=_("ID Number"), required=True)
     dob = fields.Date(string=_("Birthdate"), required=True)
     age = fields.Integer(string=_("Age"), compute="_compute_age", store=True)
@@ -23,7 +30,6 @@ class Patient(models.Model):
         string=_("Gender"),
         required=True,
     )
-
     marital_status = fields.Selection(
         [
             ("single", _("Single")),
@@ -148,3 +154,11 @@ class Patient(models.Model):
 
             record.history_ids -= deleted_records
             record.history_ids |= new_records
+
+    @api.model
+    def create(self, vals_list):
+        vals_list["sequence"] = self.env["ir.sequence"].next_by_code(
+            "dom.patient.sequence"
+        )
+        result = super(Patient, self).create(vals_list)
+        return result

@@ -12,6 +12,7 @@
     "data": [
         "security/dom_groups.xml",
         "security/ir.model.access.csv",
+        "data/dom_sequence.xml",
         "views/patient.xml",
         "views/menus.xml",
     ],
