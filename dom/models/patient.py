@@ -145,4 +145,5 @@ class Patient(models.Model):
                 lambda r: r.type == history_type
             ) - getattr(record, f"{history_type}_history_ids")
 
-            record.history_ids = (record.history_ids - deleted_records) | new_records
+            record.history_ids -= deleted_records
+            record.history_ids |= new_records
