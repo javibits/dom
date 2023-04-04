@@ -1,10 +1,21 @@
 <odoo>
   <data>
+
+    <!-- Only display 'Apps', 'Contacts' and 'Discuss' menus to group_system -->
+    <menuitem id="base.menu_management" name="Apps" groups="base.group_system"/>
+    <record id="contacts.menu_contacts" model="ir.ui.menu">
+      <field name="groups_id" eval="[Command.set([ref('base.group_system')])]"/>
+    </record>
+    <record id="mail.menu_root_discuss" model="ir.ui.menu">
+      <field name="groups_id" eval="[Command.set([ref('base.group_system')])]"/>
+    </record>
+
     <menuitem 
       id="patient_menu"
       name="Patients"
       web_icon="dom,static/description/patient_icon.png"
       action="patient_action"
       />
+
   </data>
 </odoo>
