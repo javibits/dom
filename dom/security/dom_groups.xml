@@ -1,5 +1,12 @@
 <odoo>
   <data noupdate="0">
+
+      <!-- DOM Doctor Group -->
+    <record id="dom_group_doctor" model="res.groups">
+      <field name="name">Doctor</field>
+      <field name="category_id" ref="base.module_category_services_health" />
+    </record>
+
     <!-- DOM Manager Group -->
     <record id="dom_group_manager" model="res.groups">
       <field name="name">Manager</field>
