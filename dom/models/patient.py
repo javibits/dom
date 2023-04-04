@@ -10,13 +10,16 @@ class Patient(models.Model):
             "UNIQUE (id_number)",
             _("Identification number must be unique."),
         ),
+        (
+            "dom_patient_sequence_unique",
+            "UNIQUE (sequence)",
+            _("Patient # must be unique."),
+        ),
     ]
 
     sequence = fields.Char(
         string=_("Patient #"),
-        required=True,
         readonly=True,
-        default="P0000",
     )
     id_number = fields.Char(string=_("ID Number"), required=True)
     dob = fields.Date(string=_("Birthdate"), required=True)
