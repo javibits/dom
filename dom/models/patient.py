@@ -17,6 +17,10 @@ class Patient(models.Model):
         ),
     ]
 
+    is_patient = fields.Boolean(
+        string=_("Is a Patient?"),
+        default=False,
+    )
     sequence = fields.Char(
         string=_("Patient #"),
         readonly=True,
@@ -160,8 +164,9 @@ class Patient(models.Model):
 
     @api.model
     def create(self, vals_list):
-        vals_list["sequence"] = self.env["ir.sequence"].next_by_code(
-            "dom.patient.sequence"
-        )
+        if vals_list.get("is_patient"):
+            vals_list["sequence"] = self.env["ir.sequence"].next_by_code(
+                "dom.patient.sequence"
+            )
         result = super(Patient, self).create(vals_list)
         return result
