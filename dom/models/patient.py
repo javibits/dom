@@ -162,11 +162,12 @@ class Patient(models.Model):
             record.history_ids -= deleted_records
             record.history_ids |= new_records
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals_list):
-        if vals_list.get("is_patient"):
-            vals_list["sequence"] = self.env["ir.sequence"].next_by_code(
-                "dom.patient.sequence"
-            )
+        for vals in vals_list:
+            if vals.get("is_patient"):
+                vals["sequence"] = self.env["ir.sequence"].next_by_code(
+                    "dom.patient.sequence"
+                )
         result = super(Patient, self).create(vals_list)
         return result
