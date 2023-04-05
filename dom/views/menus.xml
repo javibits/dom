@@ -35,10 +35,10 @@
     />
 
     <menuitem 
-      id="patient_history_item_menu"
-      name="History Item"
+      id="patient_background_item_menu"
+      name="Background Item"
       parent="dom.settings_menu"
-      action="dom.patient_history_item_action"
+      action="dom.patient_background_item_action"
       groups="dom.group_doctor"
     />
 

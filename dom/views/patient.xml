@@ -82,10 +82,10 @@
                       </group>
                   </group>
               </page>
-              <page name="patient_history" string="History">
+              <page name="patient_background" string="Background">
                 <notebook>
-                  <page name="personal_history" string="Personal">
-                    <field name="personal_history_ids" context="{'default_type': 'personal'}">
+                  <page name="personal_background" string="Personal">
+                    <field name="personal_background_ids" context="{'default_type': 'personal'}">
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
@@ -95,8 +95,8 @@
                       </tree>
                     </field>
                   </page>
-                  <page name="family_history" string="Family">
-                    <field name="family_history_ids" context="{'default_type': 'family'}">
+                  <page name="family_background" string="Family">
+                    <field name="family_background_ids" context="{'default_type': 'family'}">
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
@@ -108,8 +108,8 @@
                       </tree>
                     </field>
                   </page>
-                  <page name="psychobiological_habits_history" string="Psychobiological Habits">
-                    <field name="psychobiological_habits_history_ids" context="{'default_type': 'psychobiological_habits'}">
+                  <page name="psychobiological_habits_background" string="Psychobiological Habits">
+                    <field name="psychobiological_habits_background_ids" context="{'default_type': 'psychobiological_habits'}">
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
@@ -119,8 +119,8 @@
                       </tree>
                     </field>
                   </page>
-                  <page name="sexual_activity_history" string="Sexual Activity">
-                    <field name="sexual_activity_history_ids" context="{'default_type': 'sexual_activity'}">
+                  <page name="sexual_activity_background" string="Sexual Activity">
+                    <field name="sexual_activity_background_ids" context="{'default_type': 'sexual_activity'}">
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>
@@ -130,8 +130,8 @@
                       </tree>
                     </field>
                   </page>
-                  <page name="other_history" string="Other">
-                    <field name="other_history_ids" context="{'default_type': 'other'}">
+                  <page name="other_background" string="Other">
+                    <field name="other_background_ids" context="{'default_type': 'other'}">
                       <tree editable="bottom">
                           <field name="type" invisible="1"/>
                           <field name="write_date"/>

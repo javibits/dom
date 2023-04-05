@@ -48,40 +48,40 @@ class Patient(models.Model):
     )
     profession = fields.Char(string=_("Profession"))
     occupation = fields.Char(string=_("Occupation"))
-    history_ids = fields.One2many(
-        "dom.patient.history",
+    background_ids = fields.One2many(
+        "dom.patient.background",
         "patient_id",
-        string=_("Patient History"),
+        string=_("Patient Background"),
     )
-    personal_history_ids = fields.One2many(
-        "dom.patient.history",
+    personal_background_ids = fields.One2many(
+        "dom.patient.background",
         "patient_id",
-        compute="_compute_personal_history_ids",
-        inverse="_inverse_personal_history_ids",
+        compute="_compute_personal_background_ids",
+        inverse="_inverse_personal_background_ids",
     )
-    family_history_ids = fields.One2many(
-        "dom.patient.history",
+    family_background_ids = fields.One2many(
+        "dom.patient.background",
         "patient_id",
-        compute="_compute_family_history_ids",
-        inverse="_inverse_family_history_ids",
+        compute="_compute_family_background_ids",
+        inverse="_inverse_family_background_ids",
     )
-    psychobiological_habits_history_ids = fields.One2many(
-        "dom.patient.history",
+    psychobiological_habits_background_ids = fields.One2many(
+        "dom.patient.background",
         "patient_id",
-        compute="_compute_psychobiological_habits_history_ids",
-        inverse="_inverse_psychobiological_habits_history_ids",
+        compute="_compute_psychobiological_habits_background_ids",
+        inverse="_inverse_psychobiological_habits_background_ids",
     )
-    sexual_activity_history_ids = fields.One2many(
-        "dom.patient.history",
+    sexual_activity_background_ids = fields.One2many(
+        "dom.patient.background",
         "patient_id",
-        compute="_compute_sexual_activity_history_ids",
-        inverse="_inverse_sexual_activity_history_ids",
+        compute="_compute_sexual_activity_background_ids",
+        inverse="_inverse_sexual_activity_background_ids",
     )
-    other_history_ids = fields.One2many(
-        "dom.patient.history",
+    other_background_ids = fields.One2many(
+        "dom.patient.background",
         "patient_id",
-        compute="_compute_other_history_ids",
-        inverse="_inverse_other_history_ids",
+        compute="_compute_other_background_ids",
+        inverse="_inverse_other_background_ids",
     )
 
     @api.depends("dob")
@@ -97,69 +97,71 @@ class Patient(models.Model):
                 )
                 patient.age = age
 
-    @api.depends("history_ids")
-    def _compute_personal_history_ids(self):
-        self._compute_history_ids("personal")
+    @api.depends("background_ids")
+    def _compute_personal_background_ids(self):
+        self._compute_background_ids("personal")
 
-    @api.depends("history_ids")
-    def _inverse_personal_history_ids(self):
-        self._inverse_history_ids("personal")
+    @api.depends("background_ids")
+    def _inverse_personal_background_ids(self):
+        self._inverse_background_ids("personal")
 
-    @api.depends("history_ids")
-    def _compute_family_history_ids(self):
-        self._compute_history_ids("family")
+    @api.depends("background_ids")
+    def _compute_family_background_ids(self):
+        self._compute_background_ids("family")
 
-    @api.depends("history_ids")
-    def _inverse_family_history_ids(self):
-        self._inverse_history_ids("family")
+    @api.depends("background_ids")
+    def _inverse_family_background_ids(self):
+        self._inverse_background_ids("family")
 
-    @api.depends("history_ids")
-    def _compute_psychobiological_habits_history_ids(self):
-        self._compute_history_ids("psychobiological_habits")
+    @api.depends("background_ids")
+    def _compute_psychobiological_habits_background_ids(self):
+        self._compute_background_ids("psychobiological_habits")
 
-    @api.depends("history_ids")
-    def _inverse_psychobiological_habits_history_ids(self):
-        self._inverse_history_ids("psychobiological_habits")
+    @api.depends("background_ids")
+    def _inverse_psychobiological_habits_background_ids(self):
+        self._inverse_background_ids("psychobiological_habits")
 
-    @api.depends("history_ids")
-    def _compute_sexual_activity_history_ids(self):
-        self._compute_history_ids("sexual_activity")
+    @api.depends("background_ids")
+    def _compute_sexual_activity_background_ids(self):
+        self._compute_background_ids("sexual_activity")
 
-    @api.depends("history_ids")
-    def _inverse_sexual_activity_history_ids(self):
-        self._inverse_history_ids("sexual_activity")
+    @api.depends("background_ids")
+    def _inverse_sexual_activity_background_ids(self):
+        self._inverse_background_ids("sexual_activity")
 
-    @api.depends("history_ids")
-    def _compute_other_history_ids(self):
-        self._compute_history_ids("other")
+    @api.depends("background_ids")
+    def _compute_other_background_ids(self):
+        self._compute_background_ids("other")
 
-    @api.depends("history_ids")
-    def _inverse_other_history_ids(self):
-        self._inverse_history_ids("other")
+    @api.depends("background_ids")
+    def _inverse_other_background_ids(self):
+        self._inverse_background_ids("other")
 
-    def _compute_history_ids(self, history_type):
+    def _compute_background_ids(self, background_type):
         """
-        Generic funcition for computing history_ids based on history type
+        Generic funcition for computing background_ids based on background type
 
         Args:
-            history_type (str): One of the options defined in 'type' selection field
-            of 'dom.patient.history' model
+            background_type (str): One of the options defined in 'type' selection field
+            of 'dom.patient.background' model
         """
         for record in self:
-            history = record.history_ids.filtered(lambda r: r.type == history_type)
-            setattr(record, f"{history_type}_history_ids", history)
+            background = record.background_ids.filtered(
+                lambda r: r.type == background_type
+            )
+            setattr(record, f"{background_type}_background_ids", background)
 
-    def _inverse_history_ids(self, history_type):
+    def _inverse_background_ids(self, background_type):
         for record in self:
-            new_records = getattr(record, f"{history_type}_history_ids").filtered(
+            new_records = getattr(record, f"{background_type}_background_ids").filtered(
                 lambda r: not r.id
             )
-            deleted_records = record.history_ids.filtered(
-                lambda r: r.type == history_type
-            ) - getattr(record, f"{history_type}_history_ids")
+            deleted_records = record.background_ids.filtered(
+                lambda r: r.type == background_type
+            ) - getattr(record, f"{background_type}_background_ids")
 
-            record.history_ids -= deleted_records
-            record.history_ids |= new_records
+            record.background_ids -= deleted_records
+            record.background_ids |= new_records
 
     @api.model_create_multi
     def create(self, vals_list):
