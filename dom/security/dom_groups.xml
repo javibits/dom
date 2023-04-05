@@ -2,17 +2,22 @@
   <data noupdate="0">
 
       <!-- DOM Doctor Group -->
-    <record id="dom_group_doctor" model="res.groups">
+    <record id="group_doctor" model="res.groups">
       <field name="name">Doctor</field>
       <field name="category_id" ref="base.module_category_services_health" />
     </record>
 
     <!-- DOM Manager Group -->
-    <record id="dom_group_manager" model="res.groups">
+    <record id="group_manager" model="res.groups">
       <field name="name">Manager</field>
       <field name="category_id" ref="base.module_category_services_health" />
-      <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+      <field name="implied_ids" eval="[Command.set([ref('dom.group_doctor')])]"/>
     </record>
+
+    <!-- Give DOM Manager permissions automatically to base System group -->
+    <record id="base.group_system" model="res.groups">
+      <field name="implied_ids" eval="[Command.link(ref('dom.group_manager'))]"/>
+    </record>
+
   </data>
-  oo
 </odoo>

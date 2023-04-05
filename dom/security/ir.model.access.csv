@@ -1,9 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_patient_doctor,PatientDoctor,model_res_partner,dom.dom_group_doctor,1,1,1,0
-access_patient_manager,PatientManager,model_res_partner,dom.dom_group_manager,1,1,1,1
-access_patient_history_doctor,PatientHistoryDoctor,model_dom_patient_history,dom.dom_group_doctor,1,1,1,0
-access_patient_history_manager,PatientHistoryManager,model_dom_patient_history,dom.dom_group_manager,1,1,1,1
-access_patient_history_item_doctor,PatientHistoryItemDoctor,model_dom_patient_history_item,dom.dom_group_doctor,1,1,1,0
-access_patient_history_item_manager,PatientHistoryItemManager,model_dom_patient_history_item,dom.dom_group_manager,1,1,1,1
-access_patient_family_doctor,PatientFamilyDoctor,model_dom_patient_family,dom.dom_group_doctor,1,1,1,0
-access_patient_family_manager,PatientFamilyManager,model_dom_patient_family,dom.dom_group_manager,1,1,1,1
+access_patient_doctor,PatientDoctor,model_res_partner,dom.group_doctor,1,1,1,0
+access_patient_manager,PatientManager,model_res_partner,dom.group_manager,1,1,1,1
+access_patient_history_doctor,PatientHistoryDoctor,model_dom_patient_history,dom.group_doctor,1,1,1,0
+access_patient_history_manager,PatientHistoryManager,model_dom_patient_history,dom.group_manager,1,1,1,1
+access_patient_history_item_doctor,PatientHistoryItemDoctor,model_dom_patient_history_item,dom.group_doctor,1,1,1,0
+access_patient_history_item_manager,PatientHistoryItemManager,model_dom_patient_history_item,dom.group_manager,1,1,1,1
+access_patient_family_doctor,PatientFamilyDoctor,model_dom_patient_family,dom.group_doctor,1,1,1,0
+access_patient_family_manager,PatientFamilyManager,model_dom_patient_family,dom.group_manager,1,1,1,1
