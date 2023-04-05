@@ -55,7 +55,7 @@
               <page name="personal_information" string="Personal Information">
                   <group>
                       <group>
-                          <field name="id_number" placeholder="ID Number"/>
+                          <field name="id_number" placeholder="ID Number" required="True"/>
                           <field name="phone"/>
                           <field name="mobile"/>
                           <field name="email"/>
@@ -73,8 +73,8 @@
                           </div>
                       </group>
                       <group>
-                          <field name="gender"/>
-                          <field name="dob"/>
+                          <field name="gender" required="True"/>
+                          <field name="dob" required="True"/>
                           <field name="age"/>
                           <field name="marital_status"/>
                           <field name="profession"/>

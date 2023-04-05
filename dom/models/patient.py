@@ -25,8 +25,8 @@ class Patient(models.Model):
         string=_("Patient #"),
         readonly=True,
     )
-    id_number = fields.Char(string=_("ID Number"), required=True)
-    dob = fields.Date(string=_("Birthdate"), required=True)
+    id_number = fields.Char(string=_("ID Number"))
+    dob = fields.Date(string=_("Birthdate"))
     age = fields.Integer(string=_("Age"), compute="_compute_age", store=True)
     birthplace = fields.Char(string=_("Birthplace"))
     gender = fields.Selection(
@@ -35,7 +35,6 @@ class Patient(models.Model):
             ("female", _("Female")),
         ],
         string=_("Gender"),
-        required=True,
     )
     marital_status = fields.Selection(
         [
