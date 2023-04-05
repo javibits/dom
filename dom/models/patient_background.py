@@ -32,11 +32,7 @@ class PatientBackground(models.Model):
     _name = "dom.patient.background"
     _description = "Patient Background"
 
-    item_id = fields.Many2one(
-        "dom.patient.background.item",
-        string=_("Name"),
-        ondelete="restrict",
-    )
+    item_ids = fields.Many2many("dom.patient.background.item", string=_("Items"))
     patient_id = fields.Many2one(
         "res.partner",
         string=_("Patient"),
