@@ -14,6 +14,8 @@
         "security/ir.model.access.csv",
         "data/dom_sequence.xml",
         "views/patient.xml",
+        "views/patient_family.xml",
+        "views/patient_history_item.xml",
         "views/menus.xml",
     ],
     "demo": [],

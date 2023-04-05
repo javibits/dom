@@ -14,8 +14,33 @@
       id="patient_menu"
       name="Patients"
       web_icon="dom,static/description/patient_icon.png"
-      action="patient_action"
-      />
+      action="dom.patient_action"
+      groups="dom.group_doctor"
+    />
+
+    <menuitem 
+      id="settings_menu"
+      name="DOM Settings"
+      web_icon="dom,static/description/settings_icon.png"
+      sequence="600"
+      groups="dom.group_doctor"
+    />
+
+    <menuitem 
+      id="patient_family_menu"
+      name="Family Relationship"
+      parent="dom.settings_menu"
+      action="dom.patient_family_action"
+      groups="dom.group_doctor"
+    />
+
+    <menuitem 
+      id="patient_history_item_menu"
+      name="History Item"
+      parent="dom.settings_menu"
+      action="dom.patient_history_item_action"
+      groups="dom.group_doctor"
+    />
 
   </data>
 </odoo>

@@ -15,7 +15,13 @@ class PatientHistoryItem(models.Model):
     _description = "Patient History Item"
     _rec_name = "item"
 
-    item = fields.Char(string=_("Item"))
+    item = fields.Char(
+        string=_("Item"),
+        help=_(
+            "Indicate the desease, condition, habit or activity depending on the type. "
+            "'Personal' and 'Family' type items are shared"
+        ),
+    )
     type = fields.Selection(
         HISTORY_TYPE_SELECTION_VALUES,
         string=_("Type"),

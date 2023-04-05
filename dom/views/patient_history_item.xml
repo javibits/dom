@@ -1,0 +1,25 @@
+<odoo>
+
+    <record id="patient_history_item_tree_view" model="ir.ui.view">
+      <field name="name">dom.patient.history.item.tree</field>
+      <field name="model">dom.patient.history.item</field>
+      <field name="arch" type="xml">
+        <tree sample="1" editable="top">
+          <field name="item"/>
+          <field name="type"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="patient_history_item_action" model="ir.actions.act_window">
+      <field name="name">History Item</field>
+      <field name="res_model">dom.patient.history.item</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new record
+        </p>
+      </field>
+    </record>
+
+</odoo>
