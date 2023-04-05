@@ -10,6 +10,7 @@
           <field name="id_number"/>
           <field name="sequence"/>
           <field name="email"/>
+          <field name="background_ids"/>
         </search>
       </field>
     </record>

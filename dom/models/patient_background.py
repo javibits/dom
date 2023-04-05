@@ -1,4 +1,4 @@
-from odoo import _, fields, models
+from odoo import _, api, fields, models
 
 
 BACKGROUND_TYPE_SELECTION_VALUES = [
@@ -53,6 +53,31 @@ class PatientBackground(models.Model):
         ondelete="restrict",
     )
     family_deceased = fields.Boolean(string=_("Deceased?"))
+
+    def name_get(self):
+        res = []
+        for record in self:
+            background_items = ", ".join([item.name for item in record.item_ids])
+            res.append((record.id, f"{record.family_id.name}: {background_items}"))
+        return res
+
+    @api.model
+    def _name_search(
+        self, name="", args=None, operator="ilike", limit=100, name_get_uid=None
+    ):
+        """
+        For searching on
+        """
+        args = list(args or [])
+        if name:
+            args += [
+                "|",
+                "|",
+                ("item_ids", operator, name),
+                ("type", operator, name),
+                ("family_id", operator, name),
+            ]
+        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
 
     def write(self, vals):
         """
