@@ -74,8 +74,8 @@
                           </div>
                       </group>
                       <group>
-                          <field name="gender" required="True"/>
-                          <field name="dob" required="True"/>
+                          <field name="gender"/>
+                          <field name="dob"/>
                           <field name="age"/>
                           <field name="marital_status"/>
                           <field name="profession"/>
