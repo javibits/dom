@@ -13,6 +13,7 @@ BACKGROUND_TYPE_SELECTION_VALUES = [
 class PatientBackgroundItem(models.Model):
     _name = "dom.patient.background.item"
     _description = "Patient Background Item"
+    _order = "name asc"
 
     name = fields.Char(
         string=_("Item"),

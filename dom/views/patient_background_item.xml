@@ -1,5 +1,19 @@
 <odoo>
 
+    <!-- Search View -->
+    <record id="patient_background_item_search_view" model="ir.ui.view">
+      <field name="name">dom.patient.background.item.search.view</field>
+      <field name="model">dom.patient.background.item</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <group expand="0" string="Group By">
+            <filter string="Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
     <record id="patient_background_item_tree_view" model="ir.ui.view">
       <field name="name">dom.patient.background.item.tree</field>
       <field name="model">dom.patient.background.item</field>
@@ -15,6 +29,7 @@
       <field name="name">Background Item</field>
       <field name="res_model">dom.patient.background.item</field>
       <field name="view_mode">tree,form</field>
+      <field name="context">{"search_default_group_by_type": 1}</field>
       <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
           Add a new record
