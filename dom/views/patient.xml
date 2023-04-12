@@ -84,65 +84,58 @@
                   </group>
               </page>
               <page name="patient_background" string="Background">
-                <notebook>
-                  <page name="personal_background" string="Personal">
-                    <field name="personal_background_ids" context="{'default_type': 'personal'}">
-                      <tree editable="bottom">
-                          <field name="type" invisible="1"/>
-                          <field name="write_date"/>
-                          <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','in',('personal','family'))]" context="{'default_type': 'personal'}"/>
-                          <field name="note"/>
-                          <field name="important"/>
-                      </tree>
-                    </field>
-                  </page>
-                  <page name="family_background" string="Family">
-                    <field name="family_background_ids" context="{'default_type': 'family'}">
-                      <tree editable="bottom">
-                          <field name="type" invisible="1"/>
-                          <field name="write_date"/>
-                          <field name="family_id" required="True"/>
-                          <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','in',('personal','family'))]" context="{'default_type': 'family'}"/>
-                          <field name="note"/>
-                          <field name="family_deceased" widget="boolean_toggle"/>
-                          <field name="important"/>
-                      </tree>
-                    </field>
-                  </page>
-                  <page name="psychobiological_habits_background" string="Psychobiological Habits">
-                    <field name="psychobiological_habits_background_ids" context="{'default_type': 'psychobiological_habits'}">
-                      <tree editable="bottom">
-                          <field name="type" invisible="1"/>
-                          <field name="write_date"/>
-                          <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','=','psychobiological_habits')]" context="{'default_type': 'psychobiological_habits'}"/>
-                          <field name="note"/>
-                          <field name="important"/>
-                      </tree>
-                    </field>
-                  </page>
-                  <page name="sexual_activity_background" string="Sexual Activity">
-                    <field name="sexual_activity_background_ids" context="{'default_type': 'sexual_activity'}">
-                      <tree editable="bottom">
-                          <field name="type" invisible="1"/>
-                          <field name="write_date"/>
-                          <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','=','sexual_activity')]" context="{'default_type': 'sexual_activity'}"/>
-                          <field name="note"/>
-                          <field name="important"/>
-                      </tree>
-                    </field>
-                  </page>
-                  <page name="other_background" string="Other">
-                    <field name="other_background_ids" context="{'default_type': 'other'}">
-                      <tree editable="bottom">
-                          <field name="type" invisible="1"/>
-                          <field name="write_date"/>
-                          <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','=','other')]" context="{'default_type': 'other'}"/>
-                          <field name="note"/>
-                          <field name="important"/>
-                      </tree>
-                    </field>
-                  </page>
-                </notebook>
+                <h2 class="pt-3 pb-2">Personal Background</h2>
+                <field name="personal_background_ids" context="{'default_type': 'personal'}">
+                  <tree editable="bottom">
+                      <field name="type" invisible="1"/>
+                      <field name="write_date"/>
+                      <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','in',('personal','family'))]" context="{'default_type': 'personal'}"/>
+                      <field name="note"/>
+                      <field name="important"/>
+                  </tree>
+                </field>
+                <h2 class="pt-3 pb-2">Family Background</h2>
+                <field name="family_background_ids" context="{'default_type': 'family'}">
+                  <tree editable="bottom">
+                      <field name="type" invisible="1"/>
+                      <field name="write_date"/>
+                      <field name="family_id" required="True"/>
+                      <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','in',('personal','family'))]" context="{'default_type': 'family'}"/>
+                      <field name="note"/>
+                      <field name="family_deceased" widget="boolean_toggle"/>
+                      <field name="important"/>
+                  </tree>
+                </field>
+                <h2 class="pt-3 pb-2">Psychobiological Habits</h2>
+                <field name="psychobiological_habits_background_ids" context="{'default_type': 'psychobiological_habits'}">
+                  <tree editable="bottom">
+                      <field name="type" invisible="1"/>
+                      <field name="write_date"/>
+                      <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','=','psychobiological_habits')]" context="{'default_type': 'psychobiological_habits'}"/>
+                      <field name="note"/>
+                      <field name="important"/>
+                  </tree>
+                </field>
+                <h2 class="pt-3 pb-2">Sexual Activity</h2>
+                <field name="sexual_activity_background_ids" context="{'default_type': 'sexual_activity'}">
+                  <tree editable="bottom">
+                      <field name="type" invisible="1"/>
+                      <field name="write_date"/>
+                      <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','=','sexual_activity')]" context="{'default_type': 'sexual_activity'}"/>
+                      <field name="note"/>
+                      <field name="important"/>
+                  </tree>
+                </field>
+                <h2 class="pt-3 pb-2">Other</h2>
+                <field name="other_background_ids" context="{'default_type': 'other'}">
+                  <tree editable="bottom">
+                      <field name="type" invisible="1"/>
+                      <field name="write_date"/>
+                      <field name="item_ids" widget="many2many_tags" string="Item" domain="[('type','=','other')]" context="{'default_type': 'other'}"/>
+                      <field name="note"/>
+                      <field name="important"/>
+                  </tree>
+                </field>
               </page>
               <page name='internal_notes' string="Internal Notes">
                 <field name="comment" placeholder="Internal notes..."/>
