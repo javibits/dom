@@ -1,4 +1,5 @@
-from odoo import _, fields, models
+from datetime import datetime
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -25,6 +26,9 @@ class PatientAppointment(models.Model):
         domain=[("is_patient", "=", True)],
     )
     date = fields.Date(string=_("Date"), required=True)
+    start_time = fields.Datetime(string=_("Start Time"))
+    end_time = fields.Datetime(string=_("End Time"))
+    duration = fields.Float(string=_("Duration"), compute="_compute_duration")
     state = fields.Selection(
         [
             ("draft", _("Pending")),
@@ -45,12 +49,25 @@ class PatientAppointment(models.Model):
 
     def button_in_progress(self):
         self.state = "in_progress"
+        if not self.start_time:
+            self.start_time = datetime.now()
 
     def button_done(self):
         self.state = "done"
+        if not self.end_time:
+            self.end_time = datetime.now()
 
     def button_cancel(self):
         self.state = "cancelled"
+
+    @api.depends("start_time", "end_time")
+    def _compute_duration(self):
+        for appointment in self:
+            if appointment.start_time and appointment.end_time:
+                duration = appointment.end_time - appointment.start_time
+                appointment.duration = duration.total_seconds() / 3600.0
+            else:
+                appointment.duration = 0.0
 
     def write(self, vals):
         if self.state == "cancelled":

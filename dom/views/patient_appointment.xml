@@ -77,10 +77,20 @@
           <sheet>
             <field name="active" invisible="True" />
             <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+            <div class="oe_title" attrs="{'invisible': [('state', '==', 'draft')]}">
+              <h1>
+                <field name="patient_id" readonly="True"/>
+              </h1>
+            </div>
             <group>
               <group>
-                <field name="patient_id" placeholder="Patient" attrs="{'readonly': [('state', '!=', 'draft')]}" context="{'form_view_ref':'dom.patient_form_view'}"/>
+                <field name="patient_id" placeholder="Patient" attrs="{'invisible': [('state', '!=', 'draft')], 'readonly': [('state', '!=', 'draft')]}" context="{'form_view_ref':'dom.patient_form_view'}"/>
                 <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              </group>
+              <group attrs="{'invisible': [('state', '==', 'draft')]}">
+                <field name="start_time" readonly="True" options="{'format': 'HH:mm:ss'}"/>
+                <field name="end_time" readonly="True" options="{'format': 'HH:mm:ss'}"/>
+                <field name="duration" widget="float_time"/>
               </group>
             </group>
           </sheet>
