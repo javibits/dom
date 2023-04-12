@@ -163,6 +163,12 @@ class Patient(models.Model):
             record.background_ids -= deleted_records
             record.background_ids |= new_records
 
+    def name_get(self):
+        res = []
+        for record in self:
+            res.append((record.id, f"{record.sequence} - {record.name}"))
+        return res
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
