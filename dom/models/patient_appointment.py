@@ -44,6 +44,26 @@ class PatientAppointment(models.Model):
         readonly=True,
         default="draft",
     )
+    personal_background_ids = fields.One2many(
+        related="patient_id.personal_background_ids",
+        readonly=False,
+    )
+    family_background_ids = fields.One2many(
+        related="patient_id.family_background_ids",
+        readonly=False,
+    )
+    psychobiological_habits_background_ids = fields.One2many(
+        related="patient_id.psychobiological_habits_background_ids",
+        readonly=False,
+    )
+    sexual_activity_background_ids = fields.One2many(
+        related="patient_id.sexual_activity_background_ids",
+        readonly=False,
+    )
+    other_background_ids = fields.One2many(
+        related="patient_id.other_background_ids",
+        readonly=False,
+    )
 
     def name_get(self):
         res = []
