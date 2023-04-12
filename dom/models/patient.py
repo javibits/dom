@@ -40,6 +40,8 @@ class Patient(models.Model):
         [
             ("single", _("Single")),
             ("married", _("Married")),
+            ("common_law", _("Common Law")),
+            ("separated", _("Separated")),
             ("divorced", _("Divorced")),
             ("widowed", _("Widowed")),
         ],
