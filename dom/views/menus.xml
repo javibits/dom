@@ -35,20 +35,36 @@
     />
 
     <menuitem 
-      id="patient_family_menu"
-      name="Family Relationship"
+      id="patient_appointment_reason_menu"
+      name="Reason for Visit"
       parent="dom.settings_menu"
-      action="dom.patient_family_action"
+      action="dom.patient_appointment_reason_action"
+      groups="dom.group_doctor"
+    />
+
+    <menuitem 
+      id="patient_background_menu"
+      name="Patient Background"
+      parent="dom.settings_menu"
       groups="dom.group_doctor"
     />
 
     <menuitem 
       id="patient_background_item_menu"
       name="Background Item"
-      parent="dom.settings_menu"
+      parent="dom.patient_background_menu"
       action="dom.patient_background_item_action"
+      sequence="10"
       groups="dom.group_doctor"
     />
 
+    <menuitem 
+      id="patient_family_menu"
+      name="Family Relationship"
+      parent="dom.patient_background_menu"
+      action="dom.patient_family_action"
+      sequence="20"
+      groups="dom.group_doctor"
+    />
   </data>
 </odoo>

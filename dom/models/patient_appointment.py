@@ -44,6 +44,11 @@ class PatientAppointment(models.Model):
         readonly=True,
         default="draft",
     )
+    reason_ids = fields.Many2many(
+        "dom.patient.appointment.reason",
+        string=_("Reason for visit"),
+    )
+    present_illness = fields.Text(string=_("Present Illness"))
     personal_background_ids = fields.One2many(
         related="patient_id.personal_background_ids",
         readonly=False,

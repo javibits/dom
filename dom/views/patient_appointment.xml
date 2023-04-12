@@ -87,10 +87,14 @@
                 <field name="patient_id" placeholder="Patient" attrs="{'invisible': [('state', '!=', 'draft')], 'readonly': [('state', '!=', 'draft')]}" context="{'form_view_ref':'dom.patient_form_view'}"/>
                 <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               </group>
-              <group attrs="{'invisible': [('state', '==', 'draft')]}">
+              <group attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
                 <field name="start_time" readonly="True" options="{'format': 'HH:mm:ss'}"/>
                 <field name="end_time" readonly="True" options="{'format': 'HH:mm:ss'}"/>
                 <field name="duration" widget="float_time"/>
+              </group>
+              <group attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
+                <field name="reason_ids" widget="many2many_tags" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                <field name="present_illness" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
               </group>
             </group>
             <notebook attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
