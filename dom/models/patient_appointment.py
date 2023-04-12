@@ -28,7 +28,11 @@ class PatientAppointment(models.Model):
     date = fields.Date(string=_("Date"), required=True)
     start_time = fields.Datetime(string=_("Start Time"))
     end_time = fields.Datetime(string=_("End Time"))
-    duration = fields.Float(string=_("Duration"), compute="_compute_duration")
+    duration = fields.Float(
+        string=_("Duration"),
+        compute="_compute_duration",
+        store=True,
+    )
     state = fields.Selection(
         [
             ("draft", _("Pending")),
