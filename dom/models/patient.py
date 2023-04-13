@@ -168,7 +168,10 @@ class Patient(models.Model):
     def name_get(self):
         res = []
         for record in self:
-            res.append((record.id, f"{record.sequence} - {record.name}"))
+            if record.is_patient:
+                res.append((record.id, f"{record.sequence} - {record.name}"))
+            else:
+                res.append((record.id, f"{record.name}"))
         return res
 
     @api.model_create_multi
