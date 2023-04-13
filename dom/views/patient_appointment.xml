@@ -9,6 +9,8 @@
           <field name="patient_id"/>
           <field name="date"/>
           <filter string="Today's Appointments" name="today" domain="[('date', '=', now)]"/>
+          <filter string="Future Appointments" name="future" domain="[('date', '>', now)]"/>
+          <filter string="Previous Appointments" name="future" domain="[('date', '&lt;', now)]"/>
           <separator/>
           <filter string="Pending" name="pending" domain="[('state', '=', 'draft')]"/>
           <filter string="In Progress" name="in_progress" domain="[('state', '=', 'in_progress')]"/>
