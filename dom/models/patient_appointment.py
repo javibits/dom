@@ -49,6 +49,26 @@ class PatientAppointment(models.Model):
         string=_("Reason for visit"),
     )
     present_illness = fields.Text(string=_("Present Illness"))
+
+    # Physical exam fields
+    weight = fields.Float(string=_("Weight (kg)"))
+    height = fields.Float(string=_("Height (m)"))
+    bmi = fields.Float(string="BMI", compute="_compute_bmi", store=True)
+    abdominal_circumference = fields.Float(string=_("Abdominal Circumference (cm)"))
+    blood_pressure_systolic = fields.Integer(string=_("Blood Pressure (Systolic)"))
+    blood_pressure_diastolic = fields.Integer(string=_("Blood Pressure (Diastolic)"))
+    heart_rate = fields.Integer(string=_("Heart Rate"))
+    respiratory_rate = fields.Integer(string=_("Respiratory Rate"))
+    general = fields.Text(string=_("General"))
+    cardiopulmonary = fields.Text(string=_("Cardiopulmonary"))
+    thyroid = fields.Text(string=_("Thyroid"))
+    right_breast = fields.Text(string=_("Right_breast"))
+    left_breast = fields.Text(string=_("Left_breast"))
+    abdomen = fields.Text(string=_("Abdomen"))
+    extremities = fields.Text(string=_("Extremities"))
+    neurological = fields.Text(string=_("Neurological"))
+
+    # Background fields
     personal_background_ids = fields.One2many(
         related="patient_id.personal_background_ids",
         readonly=False,
@@ -97,6 +117,13 @@ class PatientAppointment(models.Model):
                 appointment.duration = duration.total_seconds() / 3600.0
             else:
                 appointment.duration = 0.0
+
+    @api.depends("weight", "height")
+    def _compute_bmi(self):
+        for record in self:
+            if record.weight and record.height:
+                bmi = record.weight / (record.height**2)
+                record.bmi = bmi
 
     def write(self, vals):
         if self.state == "cancelled":
