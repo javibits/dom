@@ -40,6 +40,15 @@
       parent="dom.settings_menu"
       action="dom.patient_appointment_reason_action"
       groups="dom.group_doctor"
+      sequence="10"
+    />
+    <menuitem 
+      id="patient_diagnosis_menu"
+      name="Diagnosis"
+      parent="dom.settings_menu"
+      action="dom.patient_diagnosis_action"
+      groups="dom.group_doctor"
+      sequence="20"
     />
 
     <menuitem 
@@ -47,6 +56,7 @@
       name="Patient Background"
       parent="dom.settings_menu"
       groups="dom.group_doctor"
+      sequence="30"
     />
 
     <menuitem 

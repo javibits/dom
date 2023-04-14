@@ -49,6 +49,10 @@ class PatientAppointment(models.Model):
         string=_("Reason for visit"),
     )
     present_illness = fields.Text(string=_("Present Illness"))
+    diagnosis_ids = fields.Many2many(
+        "dom.patient.diagnosis",
+        string=_("Diagnostic Impression"),
+    )
 
     # Physical exam fields
     weight = fields.Float(string=_("Weight (kg)"))

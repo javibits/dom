@@ -17,6 +17,7 @@
         "views/patient_appointment.xml",
         "views/patient_appointment_reason.xml",
         "views/patient_background_item.xml",
+        "views/patient_diagnosis.xml",
         "views/patient_family.xml",
         "views/menus.xml",
     ],

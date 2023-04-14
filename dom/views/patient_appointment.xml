@@ -97,6 +97,9 @@
               <group attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
                 <field name="reason_ids" widget="many2many_tags" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                 <field name="present_illness" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                <field name="diagnosis_ids" widget="many2many_tags" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+              </group>
+              <group attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
               </group>
             </group>
             <notebook attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
