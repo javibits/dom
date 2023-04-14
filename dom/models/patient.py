@@ -86,6 +86,12 @@ class Patient(models.Model):
         inverse="_inverse_other_background_ids",
     )
 
+    appointment_ids = fields.One2many("dom.patient.appointment", "patient_id")
+    appointment_count = fields.Integer(
+        string=_("Appointment Count"),
+        compute="_compute_appointment_count",
+    )
+
     @api.depends("dob")
     def _compute_age(self):
         for patient in self:
@@ -164,6 +170,21 @@ class Patient(models.Model):
 
             record.background_ids -= deleted_records
             record.background_ids |= new_records
+
+    def _compute_appointment_count(self):
+        for record in self:
+            record.appointment_count = self.env["dom.patient.appointment"].search_count(
+                [("patient_id", "=", self.ids)]
+            )
+
+    def action_open_appointments(self):
+        return {
+            "name": "Appointments",
+            "domain": [("patient_id", "=", self.ids)],
+            "type": "ir.actions.act_window",
+            "res_model": "dom.patient.appointment",
+            "view_mode": "tree,form,calendar",
+        }
 
     def name_get(self):
         res = []

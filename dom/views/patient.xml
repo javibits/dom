@@ -38,6 +38,13 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
+            <div name="button_box" class="oe_button_box">
+              <button name="action_open_appointments"
+                      class="oe_stat_button" icon="fa-calendar"
+                      type="object">
+                  <field name="appointment_count" string="Appointment(s)" widget="statinfo"/>
+              </button>
+            </div>
             <field name="active" invisible="True" />
             <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
             <field name="image_1920" widget='image' class="oe_avatar" options="{'zoom': true, 'preview_image': 'avatar_128'}"/>
