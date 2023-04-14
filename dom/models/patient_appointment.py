@@ -18,6 +18,10 @@ class PatientAppointment(models.Model):
     ]
 
     active = fields.Boolean(string=_("Active"), default=True)
+    number = fields.Integer(
+        string=_("Appointment #"),
+        compute="_compute_appointment_number",
+    )
     patient_id = fields.Many2one(
         "res.partner",
         string=_("Patient"),
@@ -122,6 +126,15 @@ class PatientAppointment(models.Model):
                 appointment.duration = duration.total_seconds() / 3600.0
             else:
                 appointment.duration = 0.0
+
+    def _compute_appointment_number(self):
+        for record in self:
+            patient_appointments = self.search(
+                [("patient_id", "=", record.patient_id.id)],
+                order="date asc",
+            )
+            for index, appointment in enumerate(patient_appointments, start=1):
+                appointment.number = index
 
     @api.depends("weight", "height")
     def _compute_bmi(self):

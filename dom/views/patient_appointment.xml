@@ -31,6 +31,7 @@
       <field name="model">dom.patient.appointment</field>
       <field name="arch" type="xml">
         <tree sample="1" decoration-success="state == 'in_progress'" decoration-danger="state == 'cancelled'" decoration-muted="state == 'done'" decoration-primary="state == 'draft'">
+          <field name="number"/>
           <field name="patient_id"/>
           <field name="date"/>
           <field name="state"/>
@@ -88,6 +89,7 @@
               <group>
                 <field name="patient_id" placeholder="Patient" attrs="{'invisible': [('state', '!=', 'draft')], 'readonly': [('state', '!=', 'draft')]}" context="{'form_view_ref':'dom.patient_form_view'}"/>
                 <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="number"/>
               </group>
               <group attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
                 <field name="start_time" readonly="True" options="{'format': 'HH:mm:ss'}"/>
