@@ -7,7 +7,6 @@ class PatientAppointment(models.Model):
     _name = "dom.patient.appointment"
     _description = "Patient Appointment"
     _order = "date desc"
-    rec_name = "patient_id"
 
     _sql_constraints = [
         (
@@ -18,6 +17,7 @@ class PatientAppointment(models.Model):
     ]
 
     active = fields.Boolean(string=_("Active"), default=True)
+    name = fields.Char(string=_("Name"), compute="_compute_name")
     number = fields.Integer(
         string=_("Appointment #"),
         compute="_compute_appointment_number",
@@ -99,12 +99,6 @@ class PatientAppointment(models.Model):
         readonly=False,
     )
 
-    def name_get(self):
-        res = []
-        for record in self:
-            res.append((record.id, f"{record.patient_id.name}"))
-        return res
-
     def button_in_progress(self):
         self.state = "in_progress"
         if not self.start_time:
@@ -126,6 +120,10 @@ class PatientAppointment(models.Model):
                 appointment.duration = duration.total_seconds() / 3600.0
             else:
                 appointment.duration = 0.0
+
+    def _compute_name(self):
+        for appointment in self:
+            appointment.name = f"({appointment.number}) - {appointment.patient_id.name}"
 
     def _compute_appointment_number(self):
         for record in self:
