@@ -50,6 +50,19 @@ class Patient(models.Model):
     )
     profession = fields.Char(string=_("Profession"))
     occupation = fields.Char(string=_("Occupation"))
+    blood_type = fields.Selection(
+        [
+            ("A+", "A+"),
+            ("A", "A-"),
+            ("B+", "B+"),
+            ("B-", "B-"),
+            ("AB+", "AB+"),
+            ("AB-", "AB-"),
+            ("O+", "O+"),
+            ("O-", "O-"),
+        ],
+        string=_("Blood Type"),
+    )
     background_ids = fields.One2many(
         "dom.patient.background",
         "patient_id",

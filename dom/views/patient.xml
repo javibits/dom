@@ -85,6 +85,7 @@
                           <field name="dob"/>
                           <field name="age"/>
                           <field name="marital_status"/>
+                          <field name="blood_type"/>
                           <field name="profession"/>
                           <field name="occupation"/>
                       </group>
