@@ -53,6 +53,7 @@ class PatientAppointment(models.Model):
         "dom.patient.diagnosis",
         string=_("Diagnostic Impression"),
     )
+    evolution = fields.Text(string=_("Evolution"))
 
     # Physical exam fields
     weight = fields.Float(string=_("Weight (kg)"))
