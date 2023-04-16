@@ -93,5 +93,14 @@
       groups="dom.group_doctor"
       sequence="10"
     />
+
+    <menuitem
+      id="pharmacological_treatment_menu"
+      name="Pharmacological Treatments"
+      parent="dom.prescription_settings_menu"
+      action="dom.pharmacological_treatment_action"
+      groups="dom.group_doctor"
+      sequence="20"
+    />
   </data>
 </odoo>
