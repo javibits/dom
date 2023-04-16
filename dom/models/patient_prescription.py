@@ -33,6 +33,18 @@ class PatientPrescription(models.Model):
     _name = "dom.patient.prescription"
     _description = "Patient Prescription"
     order = "date desc, pacient_id asc"
+    _sql_constraints = [
+        (
+            "dom_patient_name_unique",
+            "UNIQUE (patient_id, date)",
+            _("A patient already has a prescription on this date"),
+        ),
+        (
+            "dom_patient_appointment_unique",
+            "UNIQUE (appointment_id)",
+            _("Appointment already has a prescription."),
+        ),
+    ]
 
     date = fields.Date(
         string=_("Date"),
