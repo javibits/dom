@@ -1,4 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medicine_doctor,MedicineDoctor,model_dom_medicine,dom.group_doctor,1,1,1,0
+access_medicine_manager,MedicineManager,model_dom_medicine,dom.group_manager,1,1,1,1
 access_patient_doctor,PatientDoctor,model_res_partner,dom.group_doctor,1,1,1,0
 access_patient_manager,PatientManager,model_res_partner,dom.group_manager,1,1,1,1
 access_patient_background_doctor,PatientBackgroundDoctor,model_dom_patient_background,dom.group_doctor,1,1,1,1

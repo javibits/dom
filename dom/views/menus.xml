@@ -76,5 +76,22 @@
       sequence="20"
       groups="dom.group_doctor"
     />
+
+    <menuitem
+      id="prescription_settings_menu"
+      name="Prescriptions"
+      parent="dom.settings_menu"
+      groups="dom.group_doctor"
+      sequence="40"
+    />
+
+    <menuitem
+      id="medicine_menu"
+      name="Medicines"
+      parent="dom.prescription_settings_menu"
+      action="dom.medicine_action"
+      groups="dom.group_doctor"
+      sequence="10"
+    />
   </data>
 </odoo>

@@ -1,3 +1,4 @@
+from . import medicine
 from . import patient
 from . import patient_appointment
 from . import patient_appointment_reason
