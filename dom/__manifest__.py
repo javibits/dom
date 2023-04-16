@@ -20,6 +20,7 @@
         "views/patient_background_item.xml",
         "views/patient_diagnosis.xml",
         "views/patient_family.xml",
+        "views/patient_prescription.xml",
         "views/pharmacological_treatment.xml",
         "views/menus.xml",
     ],

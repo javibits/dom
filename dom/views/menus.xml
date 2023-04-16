@@ -27,6 +27,14 @@
     />
 
     <menuitem 
+      id="patient_prescription_menu"
+      name="Prescriptions"
+      web_icon="dom,static/description/prescription_icon.png"
+      action="dom.patient_prescription_action"
+      groups="dom.group_doctor"
+    />
+
+    <menuitem 
       id="settings_menu"
       name="DOM Settings"
       web_icon="dom,static/description/settings_icon.png"
