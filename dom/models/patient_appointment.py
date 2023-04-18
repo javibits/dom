@@ -1,5 +1,5 @@
 from datetime import datetime
-from odoo import _, api, fields, models
+from odoo import _, api, Command, fields, models
 from odoo.exceptions import UserError
 
 
@@ -107,6 +107,10 @@ class PatientAppointment(models.Model):
         related="prescription_id.line_ids",
         readonly=False,
     )
+    pharmacological_treatment_ids = fields.Many2many(
+        "dom.pharmacological.treatment",
+        string=_("Pharmacological Treatments"),
+    )
 
     def button_in_progress(self):
         self.state = "in_progress"
@@ -138,6 +142,21 @@ class PatientAppointment(models.Model):
                 appointment.duration = duration.total_seconds() / 3600.0
             else:
                 appointment.duration = 0.0
+
+    @api.onchange("pharmacological_treatment_ids")
+    def _onchange_pharmacological_treatment_ids(self):
+        """
+        Updates prescription_line_ids based on pharmacological treatments selected.
+        Each time a treatment is selected, the prescription_line_ids is recreated
+        """
+        medicines = []
+        self.prescription_line_ids = [Command.clear()]
+        for treatment in self.pharmacological_treatment_ids:
+            for medicine in treatment.medicine_ids:
+                medicines.append(
+                    Command.create({"medicine_id": medicine.id}),
+                )
+        self.prescription_line_ids = medicines
 
     def _compute_name(self):
         for appointment in self:
