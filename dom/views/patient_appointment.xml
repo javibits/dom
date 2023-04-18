@@ -193,7 +193,7 @@
                 </field>
               </page>
               <page name="patient_prescription" string="Prescription">
-                  <field name="prescription_id" invisible="True"/>
+                <field name="prescription_id" invisible="True"/>
                 <h2 class="my-3" attrs="{'invisible': [('prescription_id', '=', False)]}">Prescription</h2>
                 <button name="button_create_prescription"
                     type="object"
