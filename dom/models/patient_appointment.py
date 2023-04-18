@@ -98,6 +98,15 @@ class PatientAppointment(models.Model):
         related="patient_id.other_background_ids",
         readonly=False,
     )
+    prescription_id = fields.Many2one(
+        "dom.patient.prescription",
+        string=_("Prescription"),
+        ondelete="set null",
+    )
+    prescription_line_ids = fields.One2many(
+        related="prescription_id.line_ids",
+        readonly=False,
+    )
 
     def button_in_progress(self):
         self.state = "in_progress"
@@ -111,6 +120,15 @@ class PatientAppointment(models.Model):
 
     def button_cancel(self):
         self.state = "cancelled"
+
+    def button_create_prescription(self):
+        prescription = self.env["dom.patient.prescription"].create(
+            {
+                "patient_id": self.patient_id.id,
+                "appointment_id": self.id,
+            }
+        )
+        self.prescription_id = prescription
 
     @api.depends("start_time", "end_time")
     def _compute_duration(self):

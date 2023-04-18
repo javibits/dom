@@ -192,7 +192,22 @@
                   </tree>
                 </field>
               </page>
-
+              <page name="patient_prescription" string="Prescription">
+                  <field name="prescription_id" invisible="True"/>
+                  <h2 class="py-3" attrs="{'invisible': [('prescription_id', '=', False)]}">Prescription</h2>
+                  <button name="button_create_prescription"
+                      type="object"
+                      string="Create Prescription"
+                      attrs="{'invisible': ['|', ('prescription_id', '!=', False),('state', '!=', 'in_progress')]}"
+                      class="oe_highlight"
+                  />
+                  <field name="prescription_line_ids" attrs="{'invisible': [('prescription_id', '=', False)]}">
+                    <tree editable="bottom">
+                        <field name="medicine_id" options='{"no_open": True, "no_create": True}'/>
+                        <field name="directions"/>
+                    </tree>
+                  </field>
+              </page>
             </notebook>
           </sheet>
         </form>
