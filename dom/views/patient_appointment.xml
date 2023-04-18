@@ -107,7 +107,7 @@
             </group>
             <notebook attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
               <page name="patient_assestment" string="Assestment">
-                <h2 class="py-3">Physical Exam</h2>
+                <h2 class="my-3">Physical Exam</h2>
                 <group>
                   <group>
                     <field name="weight" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
@@ -122,7 +122,7 @@
                     <field name="blood_pressure_diastolic" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                   </group>
                 </group>
-                <div class="py-2"></div>
+                <div class="py-2"> </div>
                 <group>
                   <group>
                     <field name="general" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
@@ -139,7 +139,7 @@
                 </group>
               </page>
               <page name="patient_background" string="Background">
-                <h2 class="pt-3 pb-2">Personal Background</h2>
+                <h2 class="my-3">Personal Background</h2>
                 <field name="personal_background_ids" context="{'default_type': 'personal'}">
                   <tree editable="bottom">
                       <field name="type" invisible="1"/>
@@ -149,7 +149,7 @@
                       <field name="important"/>
                   </tree>
                 </field>
-                <h2 class="pt-3 pb-2">Family Background</h2>
+                <h2 class="my-3">Family Background</h2>
                 <field name="family_background_ids" context="{'default_type': 'family'}">
                   <tree editable="bottom">
                       <field name="type" invisible="1"/>
@@ -161,7 +161,7 @@
                       <field name="important"/>
                   </tree>
                 </field>
-                <h2 class="pt-3 pb-2">Psychobiological Habits</h2>
+                <h2 class="my-3">Psychobiological Habits</h2>
                 <field name="psychobiological_habits_background_ids" context="{'default_type': 'psychobiological_habits'}">
                   <tree editable="bottom">
                       <field name="type" invisible="1"/>
@@ -171,7 +171,7 @@
                       <field name="important"/>
                   </tree>
                 </field>
-                <h2 class="pt-3 pb-2">Sexual Activity</h2>
+                <h2 class="my-3">Sexual Activity</h2>
                 <field name="sexual_activity_background_ids" context="{'default_type': 'sexual_activity'}">
                   <tree editable="bottom">
                       <field name="type" invisible="1"/>
@@ -181,7 +181,7 @@
                       <field name="important"/>
                   </tree>
                 </field>
-                <h2 class="pt-3 pb-2">Other</h2>
+                <h2 class="my-3">Other</h2>
                 <field name="other_background_ids" context="{'default_type': 'other'}">
                   <tree editable="bottom">
                       <field name="type" invisible="1"/>
