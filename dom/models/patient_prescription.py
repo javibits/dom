@@ -23,10 +23,11 @@ class PatientPrescriptionLine(models.Model):
 
     @api.depends("medicine_id")
     def _compute_directions_onchange(self):
-        if self.medicine_id:
-            self.directions = self.medicine_id.directions
-        else:
-            self.directions = ""
+        for line in self:
+            if line.medicine_id:
+                line.directions = line.medicine_id.directions
+            else:
+                line.directions = ""
 
 
 class PatientPrescription(models.Model):
