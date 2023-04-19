@@ -15,8 +15,6 @@ class PatientAppointment(models.Model):
             _("Patient already has an appointment on this date."),
         ),
     ]
-
-    active = fields.Boolean(string=_("Active"), default=True)
     name = fields.Char(string=_("Name"), compute="_compute_name")
     number = fields.Integer(
         string=_("Appointment #"),
