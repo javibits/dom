@@ -11,6 +11,7 @@
           <field name="sequence"/>
           <field name="email"/>
           <field name="background_ids"/>
+          <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
         </search>
       </field>
     </record>
