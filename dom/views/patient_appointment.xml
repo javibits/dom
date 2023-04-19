@@ -124,18 +124,14 @@
                 </group>
                 <div class="py-2"> </div>
                 <group>
-                  <group>
                     <field name="general" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
-                    <field name="neck" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
-                    <field name="left_breast" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
-                    <field name="extremities" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
-                  </group>
-                  <group>
                     <field name="cardiopulmonary" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="neck" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="right_breast" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="left_breast" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="abdomen" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="extremities" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="neurological" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
-                  </group>
                 </group>
               </page>
               <page name="patient_background" string="Background">
