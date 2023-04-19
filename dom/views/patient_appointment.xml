@@ -46,6 +46,7 @@
         <form>
           <header>
             <field name="state" invisible="True"/>
+            <field name="patient_active" invisible="True"/>
             <button name="button_in_progress"
                     type="object"
                     string="Start Appointment"
@@ -56,7 +57,7 @@
             <button name="button_in_progress"
               type="object"
               string="Modify Data"
-              states="done"
+              attrs="{'invisible': ['|', ('patient_active', '=', False), ('state', '!=', 'done')]}"
               confirm="Are you sure you want to modify this record?"
               class="oe_highlight"
           />

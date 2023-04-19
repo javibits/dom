@@ -27,6 +27,7 @@ class PatientAppointment(models.Model):
         required=True,
         domain=[("is_patient", "=", True)],
     )
+    patient_active = fields.Boolean(related="patient_id.active")
     date = fields.Date(string=_("Date"), required=True)
     start_time = fields.Datetime(string=_("Start Time"))
     end_time = fields.Datetime(string=_("End Time"))
