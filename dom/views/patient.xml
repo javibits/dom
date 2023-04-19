@@ -45,6 +45,11 @@
                       type="object">
                   <field name="appointment_count" string="Appointment(s)" widget="statinfo"/>
               </button>
+              <button name="action_open_prescriptions"
+                      class="oe_stat_button" icon="fa-medkit"
+                      type="object">
+                <field name="prescription_count" string="Prescription(s)" widget="statinfo"/>
+              </button>
             </div>
             <field name="active" invisible="True" />
             <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>

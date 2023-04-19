@@ -104,6 +104,11 @@ class Patient(models.Model):
         string=_("Appointment Count"),
         compute="_compute_appointment_count",
     )
+    prescription_ids = fields.One2many("dom.patient.prescription", "patient_id")
+    prescription_count = fields.Integer(
+        string=_("Prescription Count"),
+        compute="_compute_prescription_count",
+    )
 
     @api.depends("dob")
     def _compute_age(self):
@@ -190,6 +195,12 @@ class Patient(models.Model):
                 [("patient_id", "=", self.ids)]
             )
 
+    def _compute_prescription_count(self):
+        for record in self:
+            record.prescription_count = self.env[
+                "dom.patient.prescription"
+            ].search_count([("patient_id", "=", self.ids)])
+
     def action_open_appointments(self):
         return {
             "name": "Appointments",
@@ -197,6 +208,15 @@ class Patient(models.Model):
             "type": "ir.actions.act_window",
             "res_model": "dom.patient.appointment",
             "view_mode": "tree,form,calendar",
+        }
+
+    def action_open_prescriptions(self):
+        return {
+            "name": "Prescriptions",
+            "domain": [("patient_id", "=", self.ids)],
+            "type": "ir.actions.act_window",
+            "res_model": "dom.patient.prescription",
+            "view_mode": "tree,form",
         }
 
     def name_get(self):
