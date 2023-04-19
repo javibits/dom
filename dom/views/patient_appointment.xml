@@ -126,7 +126,7 @@
                 <group>
                   <group>
                     <field name="general" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
-                    <field name="thyroid" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="neck" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="left_breast" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="extremities" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                   </group>

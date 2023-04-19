@@ -70,7 +70,7 @@ class PatientAppointment(models.Model):
     respiratory_rate = fields.Integer(string=_("Respiratory Rate"))
     general = fields.Text(string=_("General"))
     cardiopulmonary = fields.Text(string=_("Cardiopulmonary"))
-    thyroid = fields.Text(string=_("Thyroid"))
+    neck = fields.Text(string=_("Neck"))
     right_breast = fields.Text(string=_("Right breast"))
     left_breast = fields.Text(string=_("Left breast"))
     abdomen = fields.Text(string=_("Abdomen"))
