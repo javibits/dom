@@ -1,3 +1,4 @@
+from datetime import datetime
 from odoo import _, api, fields, models
 
 
@@ -204,7 +205,8 @@ class Patient(models.Model):
     def action_open_appointments(self):
         return {
             "name": "Appointments",
-            "domain": [("patient_id", "=", self.ids)],
+            "domain": [("patient_id", "=", self.id)],
+            "context": {"default_patient_id": self.id, "default_date": datetime.now()},
             "type": "ir.actions.act_window",
             "res_model": "dom.patient.appointment",
             "view_mode": "tree,form,calendar",
@@ -213,7 +215,8 @@ class Patient(models.Model):
     def action_open_prescriptions(self):
         return {
             "name": "Prescriptions",
-            "domain": [("patient_id", "=", self.ids)],
+            "domain": [("patient_id", "=", self.id)],
+            "context": {"default_patient_id": self.id},
             "type": "ir.actions.act_window",
             "res_model": "dom.patient.prescription",
             "view_mode": "tree,form",
