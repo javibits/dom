@@ -1,6 +1,14 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_medicine_doctor,MedicineDoctor,model_dom_medicine,dom.group_doctor,1,1,1,0
 access_medicine_manager,MedicineManager,model_dom_medicine,dom.group_manager,1,1,1,1
+access_laboratory_test_doctor,LaboratoryTestDoctor,model_dom_laboratory_test,dom.group_doctor,1,1,1,0
+access_laboratory_test_manager,LaboratoryTestManager,model_dom_laboratory_test,dom.group_manager,1,1,1,1
+access_laboratory_test_order_manager,LaboratoryTestOrderManager,model_dom_laboratory_test_order,dom.group_manager,1,1,1,1
+access_laboratory_test_order_doctor,LaboratoryTestOrderDoctor,model_dom_laboratory_test_order,dom.group_doctor,1,1,1,0
+access_laboratory_test_order_line_manager,LaboratoryTestOrderLineManager,model_dom_laboratory_test_order_line,dom.group_manager,1,1,1,1
+access_laboratory_test_order_line_doctor,LaboratoryTestOrderLineDoctor,model_dom_laboratory_test_order_line,dom.group_doctor,1,1,1,0
+access_laboratory_test_profile_doctor,LaboratoryTestProfileDoctor,model_dom_laboratory_test_profile,dom.group_doctor,1,1,1,0
+access_laboratory_test_profile_manager,LaboratoryTestProfileManager,model_dom_laboratory_test_profile,dom.group_manager,1,1,1,1
 access_patient_doctor,PatientDoctor,model_res_partner,dom.group_doctor,1,1,1,0
 access_patient_manager,PatientManager,model_res_partner,dom.group_manager,1,1,1,1
 access_patient_appointment_doctor,PatientAppointmentDoctor,model_dom_patient_appointment,dom.group_doctor,1,1,1,0

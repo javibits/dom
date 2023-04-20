@@ -110,6 +110,13 @@ class Patient(models.Model):
         string=_("Prescription Count"),
         compute="_compute_prescription_count",
     )
+    laboratory_test_order_ids = fields.One2many(
+        "dom.laboratory.test.order", "patient_id"
+    )
+    laboratory_test_order_count = fields.Integer(
+        string=_("Laboratory Test Count"),
+        compute="_compute_laboratory_test_order_count",
+    )
 
     @api.depends("dob")
     def _compute_age(self):
@@ -202,6 +209,12 @@ class Patient(models.Model):
                 "dom.patient.prescription"
             ].search_count([("patient_id", "=", self.ids)])
 
+    def _compute_laboratory_test_order_count(self):
+        for record in self:
+            record.laboratory_test_order_count = self.env[
+                "dom.laboratory.test.order"
+            ].search_count([("patient_id", "=", self.ids)])
+
     def action_open_appointments(self):
         return {
             "name": "Appointments",
@@ -219,6 +232,16 @@ class Patient(models.Model):
             "context": {"default_patient_id": self.id},
             "type": "ir.actions.act_window",
             "res_model": "dom.patient.prescription",
+            "view_mode": "tree,form",
+        }
+
+    def action_open_laboratory_test_orders(self):
+        return {
+            "name": "Laboratory Tests",
+            "domain": [("patient_id", "=", self.id)],
+            "context": {"default_patient_id": self.id},
+            "type": "ir.actions.act_window",
+            "res_model": "dom.laboratory.test.order",
             "view_mode": "tree,form",
         }
 

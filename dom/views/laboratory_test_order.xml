@@ -1,0 +1,60 @@
+<odoo>
+    <record id="laboratory_test_order_search_view" model="ir.ui.view">
+      <field name="name">dom.laboratory.test.order.search.view</field>
+      <field name="model">dom.laboratory.test.order</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="patient_id"/>
+          <field name="date"/>
+          <filter string="From Appointment" name="from_appointment" domain="[('appointment_id', '!=', False)]"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="laboratory_test_order_tree_view" model="ir.ui.view">
+      <field name="name">dom.laboratory.test.order.tree</field>
+      <field name="model">dom.laboratory.test.order</field>
+      <field name="arch" type="xml">
+        <tree sample="1">
+          <field name="patient_id"/>
+          <field name="date"/>
+          <field name="appointment_id"/>
+          <field name="line_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="laboratory_test_order_form_view" model="ir.ui.view">
+      <field name="name">dom.laboratory.test.order.form</field>
+      <field name="model">dom.laboratory.test.order</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="patient_id" options='{"no_open": True, "no_create": True}'/>
+                <field name="date"/>
+                <field name="appointment_id" options='{"no_open": True, "no_create": True}' attrs="{'invisible': [('appointment_id', '=', False)]}"/>
+                <field name="line_ids" widget="one2many">
+                  <tree editable="bottom">
+                      <field name="laboratory_test_id" options='{"no_open": True, "no_create": True}'/>
+                  </tree>
+                </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="laboratory_test_order_action" model="ir.actions.act_window">
+      <field name="name">Laboratory Tests</field>
+      <field name="res_model">dom.laboratory.test.order</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[("patient_id.active", "=", True)]</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new record
+        </p>
+      </field>
+    </record>
+
+</odoo>

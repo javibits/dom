@@ -1,0 +1,65 @@
+<odoo>
+
+    <record id="laboratory_test_tree_view" model="ir.ui.view">
+      <field name="name">dom.laboratory.test.tree</field>
+      <field name="model">dom.laboratory.test</field>
+      <field name="arch" type="xml">
+        <tree sample="1" editable="top">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="laboratory_test_action" model="ir.actions.act_window">
+      <field name="name">Laboratory Tests</field>
+      <field name="res_model">dom.laboratory.test</field>
+      <field name="view_mode">tree</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new record
+        </p>
+      </field>
+    </record>
+
+    <record id="laboratory_test_profile_tree_view" model="ir.ui.view">
+      <field name="name">dom.laboratory.test.profile.tree</field>
+      <field name="model">dom.laboratory.test.profile</field>
+      <field name="arch" type="xml">
+        <tree sample="1">
+          <field name="name"/>
+          <field name="laboratory_test_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="laboratory_test_profile_form_view" model="ir.ui.view">
+      <field name="name">dom.laboratory.test.profile.form</field>
+      <field name="model">dom.laboratory.test.profile</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="name"/>
+                <field name="laboratory_test_ids" widget="one2many">
+                  <tree editable="bottom">
+                      <field name="name"/>
+                  </tree>
+                </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="laboratory_test_profile_action" model="ir.actions.act_window">
+      <field name="name">Laboratory Test Profiles</field>
+      <field name="res_model">dom.laboratory.test.profile</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new Laboratory Test Profile
+        </p>
+      </field>
+    </record>
+
+</odoo>

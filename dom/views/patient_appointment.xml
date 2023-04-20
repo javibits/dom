@@ -209,6 +209,27 @@
                     </field>
                 </group>
               </page>
+              <page name="laboratory_test_orders" string="Laboratory Tests">
+                <field name="laboratory_test_order_id" invisible="True"/>
+                <h2 class="my-3" attrs="{'invisible': [('laboratory_test_order_id', '=', False)]}">Laboratory Tests</h2>
+                <button name="button_create_laboratory_test_order"
+                    type="object"
+                    string="Create Laboratory Tests Order"
+                    attrs="{'invisible': ['|', ('laboratory_test_order_id', '!=', False),('state', '!=', 'in_progress')]}"
+                    class="oe_highlight"
+                />
+                <group>
+                    <field name="laboratory_test_profile_ids" 
+                        widget="many2many_tags" 
+                        attrs="{'invisible': [('laboratory_test_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}"
+                    />
+                    <field name="laboratory_test_order_line_ids" attrs="{'invisible': [('laboratory_test_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}">
+                      <tree editable="bottom">
+                          <field name="laboratory_test_id" options='{"no_open": True}'/>
+                      </tree>
+                    </field>
+                </group>
+              </page>
             </notebook>
           </sheet>
         </form>

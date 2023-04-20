@@ -110,6 +110,19 @@ class PatientAppointment(models.Model):
         "dom.pharmacological.treatment",
         string=_("Pharmacological Treatments"),
     )
+    laboratory_test_order_id = fields.Many2one(
+        "dom.laboratory.test.order",
+        string=_("Laboratory Test Order"),
+        ondelete="set null",
+    )
+    laboratory_test_order_line_ids = fields.One2many(
+        related="laboratory_test_order_id.line_ids",
+        readonly=False,
+    )
+    laboratory_test_profile_ids = fields.Many2many(
+        "dom.laboratory.test.profile",
+        string=_("Laboratory Test Profiles"),
+    )
 
     def button_in_progress(self):
         self.state = "in_progress"
@@ -132,6 +145,15 @@ class PatientAppointment(models.Model):
             }
         )
         self.prescription_id = prescription
+
+    def button_create_laboratory_test_order(self):
+        laboratory_test_order = self.env["dom.laboratory.test.order"].create(
+            {
+                "patient_id": self.patient_id.id,
+                "appointment_id": self.id,
+            }
+        )
+        self.laboratory_test_order_id = laboratory_test_order
 
     @api.depends("start_time", "end_time")
     def _compute_duration(self):
@@ -156,6 +178,21 @@ class PatientAppointment(models.Model):
                     Command.create({"medicine_id": medicine.id}),
                 )
         self.prescription_line_ids = medicines
+
+    @api.onchange("laboratory_test_profile_ids")
+    def _onchange_laboratory_test_profile_ids(self):
+        """
+        Updates laboratory_test_order_line_ids based on laboratory test profiles selected.
+        Each time a profile is selected, the laboratory_test_order_line_ids is recreated
+        """
+        laboratory_tests = []
+        self.laboratory_test_order_line_ids = [Command.clear()]
+        for profile in self.laboratory_test_profile_ids:
+            for laboratory_test in profile.laboratory_test_ids:
+                laboratory_tests.append(
+                    Command.create({"laboratory_test_id": laboratory_test.id}),
+                )
+        self.laboratory_test_order_line_ids = laboratory_tests
 
     def _compute_name(self):
         for appointment in self:

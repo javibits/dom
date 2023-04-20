@@ -35,6 +35,14 @@
     />
 
     <menuitem 
+      id="laboratory_test_order_menu"
+      name="Laboratory Tests"
+      web_icon="dom,static/description/laboratory_test_icon.png"
+      action="dom.laboratory_test_order_action"
+      groups="dom.group_doctor"
+    />
+
+    <menuitem 
       id="settings_menu"
       name="DOM Settings"
       web_icon="dom,static/description/settings_icon.png"
@@ -107,6 +115,31 @@
       name="Pharmacological Treatments"
       parent="dom.prescription_settings_menu"
       action="dom.pharmacological_treatment_action"
+      groups="dom.group_doctor"
+      sequence="20"
+    />
+
+    <menuitem
+      id="laboratory_settings_menu"
+      name="Laboratory"
+      parent="dom.settings_menu"
+      groups="dom.group_doctor"
+      sequence="50"
+    />
+
+    <menuitem 
+      id="laboratory_test_menu"
+      name="Laboratory Tests"
+      parent="dom.laboratory_settings_menu"
+      action="dom.laboratory_test_action"
+      groups="dom.group_doctor"
+      sequence="10"
+    />
+    <menuitem
+      id="laboratory_test_profile_menu"
+      name="Laboratory Test Profiles"
+      parent="dom.laboratory_settings_menu"
+      action="dom.laboratory_test_profile_action"
       groups="dom.group_doctor"
       sequence="20"
     />

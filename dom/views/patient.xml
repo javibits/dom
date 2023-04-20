@@ -50,6 +50,11 @@
                       type="object">
                 <field name="prescription_count" string="Prescription(s)" widget="statinfo"/>
               </button>
+              <button name="action_open_laboratory_test_orders"
+                      class="oe_stat_button" icon="fa-flask"
+                      type="object">
+                <field name="laboratory_test_order_count" string="Laboratory test(s)" widget="statinfo"/>
+              </button>
             </div>
             <field name="active" invisible="True" />
             <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
