@@ -43,6 +43,14 @@
     />
 
     <menuitem 
+      id="medical_test_order_menu"
+      name="Medical Tests"
+      web_icon="dom,static/description/medical_test_icon.png"
+      action="dom.medical_test_order_action"
+      groups="dom.group_doctor"
+    />
+
+    <menuitem 
       id="settings_menu"
       name="DOM Settings"
       web_icon="dom,static/description/settings_icon.png"

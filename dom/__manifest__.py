@@ -16,6 +16,7 @@
         "views/laboratory_test.xml",
         "views/laboratory_test_order.xml",
         "views/medical_test.xml",
+        "views/medical_test_order.xml",
         "views/medicine.xml",
         "views/patient.xml",
         "views/patient_appointment.xml",

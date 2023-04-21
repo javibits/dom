@@ -230,6 +230,27 @@
                     </field>
                 </group>
               </page>
+              <page name="medical_test_orders" string="Medical Tests">
+                <field name="medical_test_order_id" invisible="True"/>
+                <h2 class="my-3" attrs="{'invisible': [('medical_test_order_id', '=', False)]}">Medical Tests</h2>
+                <button name="button_create_medical_test_order"
+                    type="object"
+                    string="Create Medical Tests Order"
+                    attrs="{'invisible': ['|', ('medical_test_order_id', '!=', False),('state', '!=', 'in_progress')]}"
+                    class="oe_highlight"
+                />
+                <group>
+                    <field name="medical_test_profile_ids" 
+                        widget="many2many_tags" 
+                        attrs="{'invisible': [('medical_test_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}"
+                    />
+                    <field name="medical_test_order_line_ids" attrs="{'invisible': [('medical_test_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}">
+                      <tree editable="bottom">
+                          <field name="medical_test_id" options='{"no_open": True}'/>
+                      </tree>
+                    </field>
+                </group>
+              </page>
             </notebook>
           </sheet>
         </form>
