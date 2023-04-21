@@ -200,20 +200,20 @@ class Patient(models.Model):
     def _compute_appointment_count(self):
         for record in self:
             record.appointment_count = self.env["dom.patient.appointment"].search_count(
-                [("patient_id", "=", self.ids)]
+                [("patient_id", "=", self.id)]
             )
 
     def _compute_prescription_count(self):
         for record in self:
             record.prescription_count = self.env[
                 "dom.patient.prescription"
-            ].search_count([("patient_id", "=", self.ids)])
+            ].search_count([("patient_id", "=", self.id)])
 
     def _compute_laboratory_test_order_count(self):
         for record in self:
             record.laboratory_test_order_count = self.env[
                 "dom.laboratory.test.order"
-            ].search_count([("patient_id", "=", self.ids)])
+            ].search_count([("patient_id", "=", self.id)])
 
     def action_open_appointments(self):
         return {
