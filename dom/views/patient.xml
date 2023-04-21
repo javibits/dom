@@ -55,6 +55,11 @@
                       type="object">
                 <field name="laboratory_test_order_count" string="Laboratory test(s)" widget="statinfo"/>
               </button>
+              <button name="action_open_medical_test_orders"
+                      class="oe_stat_button" icon="fa-file-o"
+                      type="object">
+                <field name="medical_test_order_count" string="Medical test(s)" widget="statinfo"/>
+              </button>
             </div>
             <field name="active" invisible="True" />
             <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
