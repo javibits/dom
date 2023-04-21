@@ -1,6 +1,7 @@
 from . import medicine
 from . import laboratory_test
 from . import laboratory_test_order
+from . import medical_test
 from . import patient
 from . import patient_appointment
 from . import patient_appointment_reason

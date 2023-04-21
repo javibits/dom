@@ -15,6 +15,7 @@
         "data/dom_sequence.xml",
         "views/laboratory_test.xml",
         "views/laboratory_test_order.xml",
+        "views/medical_test.xml",
         "views/medicine.xml",
         "views/patient.xml",
         "views/patient_appointment.xml",

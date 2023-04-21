@@ -143,5 +143,30 @@
       groups="dom.group_doctor"
       sequence="20"
     />
+
+    <menuitem
+      id="medical_test_settings_menu"
+      name="Medical Tests"
+      parent="dom.settings_menu"
+      groups="dom.group_doctor"
+      sequence="60"
+    />
+
+    <menuitem 
+      id="medical_test_menu"
+      name="Medical Tests"
+      parent="dom.medical_test_settings_menu"
+      action="dom.medical_test_action"
+      groups="dom.group_doctor"
+      sequence="10"
+    />
+    <menuitem
+      id="medical_test_profile_menu"
+      name="Medical Test Profiles"
+      parent="dom.medical_test_settings_menu"
+      action="dom.medical_test_profile_action"
+      groups="dom.group_doctor"
+      sequence="20"
+    />
   </data>
 </odoo>
