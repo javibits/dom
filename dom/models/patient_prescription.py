@@ -12,7 +12,9 @@ class PatientPrescriptionLine(models.Model):
         ondelete="cascade",
     )
     medicine_id = fields.Many2one(
-        "dom.medicine", string=_("Medicine"), ondelete="restrict"
+        "dom.medicine",
+        string=_("Name"),
+        ondelete="restrict",
     )
     directions = fields.Text(
         string=_("Directions"),
