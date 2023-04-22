@@ -219,9 +219,9 @@ class PatientAppointment(models.Model):
         self.laboratory_test_order_line_ids = laboratory_tests
 
     @api.onchange("medical_test_profile_ids")
-    def _onchange_laboratory_test_profile_ids(self):
+    def _onchange_medical_test_profile_ids(self):
         """
-        Updates medical_test_order_line_ids based on laboratory test profiles selected.
+        Updates medical_test_order_line_ids based on medical test profiles selected.
         Each time a profile is selected, the medical_test_order_line_ids is recreated
         """
         medical_tests = []
