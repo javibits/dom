@@ -1,13 +1,13 @@
 from odoo import _, api, fields, models
 
 
-class PatientPrescriptionLine(models.Model):
-    _name = "dom.patient.prescription.line"
-    _description = "Patient Prescription Line"
+class PrescriptionLineOrder(models.Model):
+    _name = "dom.prescription.order.line"
+    _description = "Prescription Order Line"
     _rec_name = "medicine_id"
 
-    prescription_id = fields.Many2one(
-        "dom.patient.prescription",
+    prescription_order_id = fields.Many2one(
+        "dom.prescription.order",
         string=_("Prescription"),
         ondelete="cascade",
     )
@@ -32,20 +32,20 @@ class PatientPrescriptionLine(models.Model):
                 line.directions = ""
 
 
-class PatientPrescription(models.Model):
-    _name = "dom.patient.prescription"
-    _description = "Patient Prescription"
+class PrescriptionOrder(models.Model):
+    _name = "dom.prescription.order"
+    _description = "Prescription Order"
     order = "date desc, pacient_id asc"
     _sql_constraints = [
         (
             "dom_patient_name_unique",
             "UNIQUE (patient_id, date)",
-            _("A patient already has a prescription on this date"),
+            _("A patient already has a Prescription Order on this date"),
         ),
         (
             "dom_patient_appointment_unique",
             "UNIQUE (appointment_id)",
-            _("Appointment already has a prescription."),
+            _("Appointment already has a Prescription Order"),
         ),
     ]
 
@@ -70,8 +70,8 @@ class PatientPrescription(models.Model):
         ondelete="cascade",
     )
     line_ids = fields.One2many(
-        "dom.patient.prescription.line",
-        "prescription_id",
+        "dom.prescription.order.line",
+        "prescription_order_id",
         string=_("Medicines"),
     )
 

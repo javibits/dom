@@ -1,7 +1,7 @@
 <odoo>
-    <record id="patient_prescription_search_view" model="ir.ui.view">
-      <field name="name">dom.patient.prescription.search.view</field>
-      <field name="model">dom.patient.prescription</field>
+    <record id="prescription_order_search_view" model="ir.ui.view">
+      <field name="name">dom.prescription.order.search.view</field>
+      <field name="model">dom.prescription.order</field>
       <field name="arch" type="xml">
         <search>
           <field name="patient_id"/>
@@ -11,9 +11,9 @@
       </field>
     </record>
 
-    <record id="patient_prescription_tree_view" model="ir.ui.view">
-      <field name="name">dom.patient.prescription.tree</field>
-      <field name="model">dom.patient.prescription</field>
+    <record id="prescription_order_tree_view" model="ir.ui.view">
+      <field name="name">dom.prescription.order.tree</field>
+      <field name="model">dom.prescription.order</field>
       <field name="arch" type="xml">
         <tree sample="1">
           <field name="patient_id"/>
@@ -24,9 +24,9 @@
       </field>
     </record>
 
-    <record id="patient_prescription_form_view" model="ir.ui.view">
-      <field name="name">dom.patient.prescription.form</field>
-      <field name="model">dom.patient.prescription</field>
+    <record id="prescription_order_form_view" model="ir.ui.view">
+      <field name="name">dom.prescription.order.form</field>
+      <field name="model">dom.prescription.order</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
@@ -46,14 +46,14 @@
       </field>
     </record>
 
-    <record id="patient_prescription_action" model="ir.actions.act_window">
-      <field name="name">Patient Prescriptions</field>
-      <field name="res_model">dom.patient.prescription</field>
+    <record id="prescription_order_action" model="ir.actions.act_window">
+      <field name="name">Prescriptions</field>
+      <field name="res_model">dom.prescription.order</field>
       <field name="view_mode">tree,form</field>
       <field name="domain">[("patient_id.active", "=", True)]</field>
       <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
-          Add a new Patient Prescription
+          Add a new Prescription Ordeer
         </p>
       </field>
     </record>

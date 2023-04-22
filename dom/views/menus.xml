@@ -27,10 +27,10 @@
     />
 
     <menuitem 
-      id="patient_prescription_menu"
+      id="prescription_order_menu"
       name="Prescriptions"
       web_icon="dom,static/description/prescription_icon.png"
-      action="dom.patient_prescription_action"
+      action="dom.prescription_order_action"
       groups="dom.group_doctor"
     />
 

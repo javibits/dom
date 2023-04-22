@@ -97,13 +97,13 @@ class PatientAppointment(models.Model):
         related="patient_id.other_background_ids",
         readonly=False,
     )
-    prescription_id = fields.Many2one(
-        "dom.patient.prescription",
+    prescription_order_id = fields.Many2one(
+        "dom.prescription.order",
         string=_("Prescription"),
         ondelete="set null",
     )
-    prescription_line_ids = fields.One2many(
-        related="prescription_id.line_ids",
+    prescription_order_line_ids = fields.One2many(
+        related="prescription_order_id.line_ids",
         readonly=False,
     )
     pharmacological_treatment_ids = fields.Many2many(
@@ -153,13 +153,13 @@ class PatientAppointment(models.Model):
         self.state = "cancelled"
 
     def button_create_prescription(self):
-        prescription = self.env["dom.patient.prescription"].create(
+        prescription = self.env["dom.prescription.order"].create(
             {
                 "patient_id": self.patient_id.id,
                 "appointment_id": self.id,
             }
         )
-        self.prescription_id = prescription
+        self.prescription_order_id = prescription
 
     def button_create_laboratory_test_order(self):
         laboratory_test_order = self.env["dom.laboratory.test.order"].create(
@@ -196,17 +196,17 @@ class PatientAppointment(models.Model):
     @api.onchange("pharmacological_treatment_ids")
     def _onchange_pharmacological_treatment_ids(self):
         """
-        Updates prescription_line_ids based on pharmacological treatments selected.
-        Each time a treatment is selected, the prescription_line_ids is recreated
+        Updates prescription_order_line_ids based on pharmacological treatments selected.
+        Each time a treatment is selected, the prescription_order_line_ids is recreated
         """
         medicines = []
-        self.prescription_line_ids = [Command.clear()]
+        self.prescription_order_line_ids = [Command.clear()]
         for treatment in self.pharmacological_treatment_ids:
             for medicine in treatment.medicine_ids:
                 medicines.append(
                     Command.create({"medicine_id": medicine.id}),
                 )
-        self.prescription_line_ids = medicines
+        self.prescription_order_line_ids = medicines
 
     @api.onchange("laboratory_test_profile_ids")
     def _onchange_laboratory_test_profile_ids(self):

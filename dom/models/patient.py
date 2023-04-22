@@ -105,7 +105,7 @@ class Patient(models.Model):
         string=_("Appointment Count"),
         compute="_compute_appointment_count",
     )
-    prescription_ids = fields.One2many("dom.patient.prescription", "patient_id")
+    prescription_order_ids = fields.One2many("dom.prescription.order", "patient_id")
     prescription_count = fields.Integer(
         string=_("Prescription Count"),
         compute="_compute_prescription_count",
@@ -210,9 +210,9 @@ class Patient(models.Model):
 
     def _compute_prescription_count(self):
         for record in self:
-            record.prescription_count = self.env[
-                "dom.patient.prescription"
-            ].search_count([("patient_id", "=", self.id)])
+            record.prescription_count = self.env["dom.prescription.order"].search_count(
+                [("patient_id", "=", self.id)]
+            )
 
     def _compute_laboratory_test_order_count(self):
         for record in self:
@@ -242,7 +242,7 @@ class Patient(models.Model):
             "domain": [("patient_id", "=", self.id)],
             "context": {"default_patient_id": self.id},
             "type": "ir.actions.act_window",
-            "res_model": "dom.patient.prescription",
+            "res_model": "dom.prescription.order",
             "view_mode": "tree,form",
         }
 
