@@ -188,6 +188,11 @@ class PatientAppointment(models.Model):
             else:
                 appointment.duration = 0.0
 
+    ############################################################################
+    # _onchange_pharmacological_treatment_ids, _onchange_laboratory_test_profile_ids and
+    # _onchange_medical_test_profile_ids could be simplified with a parameterized function
+    # but is left explicit for more clarity
+
     @api.onchange("pharmacological_treatment_ids")
     def _onchange_pharmacological_treatment_ids(self):
         """
