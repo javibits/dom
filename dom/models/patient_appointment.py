@@ -57,6 +57,7 @@ class PatientAppointment(models.Model):
     diagnosis_ids = fields.Many2many(
         "dom.patient.diagnosis",
         string=_("Diagnostic Impression"),
+        ondelete="restrict",
     )
     evolution = fields.Text(string=_("Evolution"))
 
