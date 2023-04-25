@@ -21,7 +21,7 @@ class Medicine(models.Model):
     def name_get(self):
         res = []
         for record in self:
-            res.append((record.id, f"{record.name} / {record.presentation}"))
+            res.append((record.id, f"{record.name} / {record.presentation or ''}"))
         return res
 
 
