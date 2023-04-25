@@ -51,6 +51,7 @@ class PatientAppointment(models.Model):
     reason_ids = fields.Many2many(
         "dom.patient.appointment.reason",
         string=_("Reason for visit"),
+        ondelete="restrict",
     )
     present_illness = fields.Text(string=_("Present Illness"))
     diagnosis_ids = fields.Many2many(
