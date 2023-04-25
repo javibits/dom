@@ -271,3 +271,25 @@ class PatientAppointment(models.Model):
         if self.state == "cancelled":
             raise UserError(_("Can't modify a cancelled appointment"))
         return super().write(vals)
+
+    @api.model
+    def _get_view(self, view_id=None, view_type="form", **options):
+        """
+        Hide 'gynecological examination' fields depending on config parameter
+        """
+        arch, view = super()._get_view(view_id, view_type, **options)
+        if view_type == "form":
+            active_gynecological_evaluation = (
+                self.env["ir.config_parameter"]
+                .sudo()
+                .get_param("dom.gynecological_evaluation")
+            )
+
+            if not active_gynecological_evaluation:
+                notebook_page_node = arch.xpath(
+                    "//page[@name='gynecological_examination']"
+                )
+                if notebook_page_node:
+                    notebook_page_node = notebook_page_node[0]
+                    notebook_page_node.set("invisible", "1")
+        return arch, view

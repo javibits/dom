@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record id="res_config_settings_view_form" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.inherit.dom</field>
+    <field name="model">res.config.settings</field>
+    <field name="priority" eval="10"/>
+    <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//div[hasclass('settings')]" position="inside">
+        <div class="app_settings_block" data-string="DOM" data-key="dom" string="DOM">
+          <h2 groups="dom.group_manager">Evaluation Types</h2>
+          <div class="row mt16 o_settings_container" id="management">
+            <div class="col-12 col-lg-6 o_setting_box" id="evaluation_types">
+              <div class="o_setting_left_pane">
+                <field name="gynecological_evaluation"/>
+              </div>
+              <div class="o_setting_right_pane">
+                <label for="gynecological_evaluation"/>
+                <div class="text-muted">
+                  Check to activate Gynecologycal Evaluation
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="res_config_settings_menu_action" model="ir.actions.act_window">
+    <field name="name">Settings</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">res.config.settings</field>
+    <field name="view_id" ref="res_config_settings_view_form"/>
+    <field name="view_mode">form</field>
+    <field name="target">inline</field>
+    <field name="context">{'module' : 'dom'}</field>
+  </record>
+</odoo>

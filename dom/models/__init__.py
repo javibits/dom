@@ -10,3 +10,4 @@ from . import patient_background
 from . import patient_diagnosis
 from . import patient_family
 from . import prescription_order
+from . import res_config_settings

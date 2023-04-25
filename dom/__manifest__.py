@@ -25,6 +25,7 @@
         "views/patient_diagnosis.xml",
         "views/patient_family.xml",
         "views/prescription_order.xml",
+        "views/res_config_settings.xml",
         "views/menus.xml",
     ],
     "demo": [],
