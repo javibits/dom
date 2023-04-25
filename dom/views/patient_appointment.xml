@@ -129,6 +129,7 @@
                     <field name="right_breast" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="left_breast" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="abdomen" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="rectal" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="extremities" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="neurological" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                 </group>

@@ -73,6 +73,7 @@ class PatientAppointment(models.Model):
     right_breast = fields.Text(string=_("Right breast"))
     left_breast = fields.Text(string=_("Left breast"))
     abdomen = fields.Text(string=_("Abdomen"))
+    rectal = fields.Text(string=_("Rectal Palpation"))
     extremities = fields.Text(string=_("Extremities"))
     neurological = fields.Text(string=_("Neurological"))
 
