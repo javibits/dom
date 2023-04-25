@@ -51,17 +51,16 @@
     />
 
     <menuitem 
-      id="settings_menu"
-      name="DOM Settings"
-      web_icon="dom,static/description/settings_icon.png"
-      sequence="600"
+      id="configuration_menu"
+      name="DOM Configuration"
+      web_icon="dom,static/description/configuration_icon.png"
       groups="dom.group_doctor"
     />
 
     <menuitem 
       id="patient_appointment_reason_menu"
       name="Reason for Visit"
-      parent="dom.settings_menu"
+      parent="dom.configuration_menu"
       action="dom.patient_appointment_reason_action"
       groups="dom.group_doctor"
       sequence="10"
@@ -69,7 +68,7 @@
     <menuitem 
       id="patient_diagnosis_menu"
       name="Diagnosis"
-      parent="dom.settings_menu"
+      parent="dom.configuration_menu"
       action="dom.patient_diagnosis_action"
       groups="dom.group_doctor"
       sequence="20"
@@ -78,7 +77,7 @@
     <menuitem 
       id="patient_background_menu"
       name="Patient Background"
-      parent="dom.settings_menu"
+      parent="dom.configuration_menu"
       groups="dom.group_doctor"
       sequence="30"
     />
@@ -102,9 +101,9 @@
     />
 
     <menuitem
-      id="prescription_settings_menu"
+      id="prescription_configuration_menu"
       name="Prescriptions"
-      parent="dom.settings_menu"
+      parent="dom.configuration_menu"
       groups="dom.group_doctor"
       sequence="40"
     />
@@ -112,7 +111,7 @@
     <menuitem
       id="medicine_menu"
       name="Medicines"
-      parent="dom.prescription_settings_menu"
+      parent="dom.prescription_configuration_menu"
       action="dom.medicine_action"
       groups="dom.group_doctor"
       sequence="10"
@@ -121,16 +120,16 @@
     <menuitem
       id="pharmacological_treatment_menu"
       name="Pharmacological Treatments"
-      parent="dom.prescription_settings_menu"
+      parent="dom.prescription_configuration_menu"
       action="dom.pharmacological_treatment_action"
       groups="dom.group_doctor"
       sequence="20"
     />
 
     <menuitem
-      id="laboratory_settings_menu"
+      id="laboratory_configuration_menu"
       name="Laboratory"
-      parent="dom.settings_menu"
+      parent="dom.configuration_menu"
       groups="dom.group_doctor"
       sequence="50"
     />
@@ -138,7 +137,7 @@
     <menuitem 
       id="laboratory_test_menu"
       name="Laboratory Tests"
-      parent="dom.laboratory_settings_menu"
+      parent="dom.laboratory_configuration_menu"
       action="dom.laboratory_test_action"
       groups="dom.group_doctor"
       sequence="10"
@@ -146,16 +145,16 @@
     <menuitem
       id="laboratory_test_profile_menu"
       name="Laboratory Test Profiles"
-      parent="dom.laboratory_settings_menu"
+      parent="dom.laboratory_configuration_menu"
       action="dom.laboratory_test_profile_action"
       groups="dom.group_doctor"
       sequence="20"
     />
 
     <menuitem
-      id="medical_test_settings_menu"
+      id="medical_test_configuration_menu"
       name="Medical Tests"
-      parent="dom.settings_menu"
+      parent="dom.configuration_menu"
       groups="dom.group_doctor"
       sequence="60"
     />
@@ -163,7 +162,7 @@
     <menuitem 
       id="medical_test_menu"
       name="Medical Tests"
-      parent="dom.medical_test_settings_menu"
+      parent="dom.medical_test_configuration_menu"
       action="dom.medical_test_action"
       groups="dom.group_doctor"
       sequence="10"
@@ -171,7 +170,7 @@
     <menuitem
       id="medical_test_profile_menu"
       name="Medical Test Profiles"
-      parent="dom.medical_test_settings_menu"
+      parent="dom.medical_test_configuration_menu"
       action="dom.medical_test_profile_action"
       groups="dom.group_doctor"
       sequence="20"
