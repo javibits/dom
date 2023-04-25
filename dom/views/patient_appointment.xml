@@ -89,6 +89,7 @@
                 <field name="patient_id" placeholder="Patient" attrs="{'invisible': [('state', '!=', 'draft')], 'readonly': [('state', '!=', 'draft')]}" context="{'form_view_ref':'dom.patient_form_view'}"/>
                 <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                 <field name="number"/>
+                <field name="patient_gender" invisible="True"/>
               </group>
               <group attrs="{'invisible': [('state', 'in', ['draft', 'cancelled'])]}">
                 <field name="start_time" readonly="True" options="{'format': 'HH:mm:ss'}"/>
@@ -132,6 +133,15 @@
                     <field name="rectal" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="extremities" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="neurological" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                </group>
+              </page>
+              <page name="gynecological_examination" string="Gynecological Examination" attrs="{'invisible': [('patient_gender', '!=', 'female')]}">
+                <h2 class="my-3">Gynecological Examination</h2>
+                <group>
+                    <field name="external_genitalia" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="cervicovaginal" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="vaginal_palpation" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    
                 </group>
               </page>
               <page name="patient_background" string="Background">

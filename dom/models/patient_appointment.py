@@ -27,6 +27,7 @@ class PatientAppointment(models.Model):
         required=True,
         domain=[("is_patient", "=", True)],
     )
+    patient_gender = fields.Selection(related="patient_id.gender")
     patient_active = fields.Boolean(related="patient_id.active")
     date = fields.Date(string=_("Date"), required=True)
     start_time = fields.Datetime(string=_("Start Time"))
@@ -76,6 +77,13 @@ class PatientAppointment(models.Model):
     rectal = fields.Text(string=_("Rectal Palpation"))
     extremities = fields.Text(string=_("Extremities"))
     neurological = fields.Text(string=_("Neurological"))
+
+    # Gynecological examination fields
+    external_genitalia = fields.Text(string=_("External Genitalia"))
+    cervicovaginal = fields.Text(string=_("Cervicovaginal"))
+    vaginal_palpation = fields.Text(string=_("Vaginal Palpation"))
+    colposcopy = fields.Text(string=_("Colposcopy"))
+    cytology = fields.Text(string=_("Cytology"))
 
     # Background fields
     personal_background_ids = fields.One2many(
