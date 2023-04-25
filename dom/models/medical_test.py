@@ -31,4 +31,8 @@ class MedicalTestProfile(models.Model):
     ]
 
     name = fields.Char(string=_("Name"))
-    medical_test_ids = fields.Many2many("dom.medical.test", string=_("Tests"))
+    medical_test_ids = fields.Many2many(
+        "dom.medical.test",
+        string=_("Tests"),
+        ondelete="restrict",
+    )
