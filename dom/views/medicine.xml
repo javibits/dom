@@ -22,4 +22,47 @@
       </field>
     </record>
 
+    <record id="pharmacological_treatment_tree_view" model="ir.ui.view">
+      <field name="name">dom.pharmacological.treatment.tree</field>
+      <field name="model">dom.pharmacological.treatment</field>
+      <field name="arch" type="xml">
+        <tree sample="1">
+          <field name="name"/>
+          <field name="medicine_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="pharmacological_treatment_form_view" model="ir.ui.view">
+      <field name="name">dom.pharmacological.treatment.form</field>
+      <field name="model">dom.pharmacological.treatment</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="name"/>
+                <field name="medicine_ids">
+                  <tree>
+                      <field name="name"/>
+                      <field name="presentation"/>
+                      <field name="directions"/>
+                  </tree>
+                </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="pharmacological_treatment_action" model="ir.actions.act_window">
+      <field name="name">Pharmacological Treatments</field>
+      <field name="res_model">dom.pharmacological.treatment</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new Pharmacological Treatment
+        </p>
+      </field>
+    </record>
+
 </odoo>

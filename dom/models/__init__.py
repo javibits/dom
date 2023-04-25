@@ -9,5 +9,4 @@ from . import patient_appointment_reason
 from . import patient_background
 from . import patient_diagnosis
 from . import patient_family
-from . import pharmacological_treatment
 from . import prescription_order
