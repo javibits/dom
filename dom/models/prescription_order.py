@@ -1,7 +1,7 @@
 from odoo import _, api, fields, models
 
 
-class PrescriptionLineOrder(models.Model):
+class PrescriptionOrderLine(models.Model):
     _name = "dom.prescription.order.line"
     _description = "Prescription Order Line"
     _rec_name = "medicine_id"
@@ -68,6 +68,11 @@ class PrescriptionOrder(models.Model):
         "dom.patient.appointment",
         string=_("Appointment"),
         ondelete="cascade",
+    )
+    pharmacological_treatment_ids = fields.Many2many(
+        "dom.pharmacological.treatment",
+        related="appointment_id.pharmacological_treatment_ids",
+        readonly=False,
     )
     line_ids = fields.One2many(
         "dom.prescription.order.line",
