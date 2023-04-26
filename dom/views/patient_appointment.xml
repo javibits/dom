@@ -141,7 +141,8 @@
                     <field name="external_genitalia" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="cervicovaginal" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="vaginal_palpation" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
-                    
+                    <field name="colposcopy" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="cytology" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                 </group>
               </page>
               <page name="patient_background" string="Background">
