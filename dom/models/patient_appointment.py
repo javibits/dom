@@ -59,7 +59,7 @@ class PatientAppointment(models.Model):
         string=_("Diagnostic Impression"),
         ondelete="restrict",
     )
-    evolution = fields.Text(string=_("Evolution"))
+    evolution = fields.Text(string=_("Evolution and Management Plan"))
 
     # Physical exam fields
     weight = fields.Float(string=_("Weight (kg)"))
