@@ -120,6 +120,7 @@
                     <field name="heart_rate" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="blood_pressure_systolic" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="blood_pressure_diastolic" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
+                    <field name="temperature" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                   </group>
                 </group>
                 <div class="py-2"> </div>

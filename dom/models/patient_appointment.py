@@ -70,6 +70,7 @@ class PatientAppointment(models.Model):
     blood_pressure_diastolic = fields.Integer(string=_("Blood Pressure (Diastolic)"))
     heart_rate = fields.Integer(string=_("Heart Rate"))
     respiratory_rate = fields.Integer(string=_("Respiratory Rate"))
+    temperature = fields.Float(string=_("Temperature"))
     general = fields.Text(string=_("General"))
     cardiopulmonary = fields.Text(string=_("Cardiopulmonary"))
     neck = fields.Text(string=_("Neck"))
