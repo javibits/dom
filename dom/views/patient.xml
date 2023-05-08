@@ -65,6 +65,11 @@
                       type="object">
                 <field name="referral_order_count" string="Referral Order(s)" widget="statinfo"/>
               </button>
+              <button name="action_open_hospitalization_orders"
+                      class="oe_stat_button" icon="fa-hospital-o"
+                      type="object">
+                <field name="hospitalization_order_count" string="Hospitalization Order(s)" widget="statinfo"/>
+              </button>
             </div>
             <field name="active" invisible="True" />
             <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>

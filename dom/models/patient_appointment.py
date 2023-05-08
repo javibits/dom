@@ -159,6 +159,11 @@ class PatientAppointment(models.Model):
         "appointment_id",
         string=_("Referral Orders"),
     )
+    hospitalization_order_ids = fields.One2many(
+        "dom.hospitalization.order",
+        "appointment_id",
+        string=_("Hospitalization Orders"),
+    )
 
     def button_in_progress(self):
         self.state = "in_progress"

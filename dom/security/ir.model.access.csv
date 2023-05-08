@@ -1,6 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_doctor_specialization_doctor,DoctorSpecializationDoctor,model_dom_doctor_specialization,dom.group_doctor,1,1,1,1
 access_doctor_specialization_manager,DoctorSpecializationManager,model_dom_doctor_specialization,dom.group_manager,1,1,1,0
+access_hospitalization_order_doctor,HospitalizationOrderDoctor,model_dom_hospitalization_order,dom.group_doctor,1,1,1,1
+access_hospitalization_order_manager,HospitalizationOrderManager,model_dom_referral_order,dom.group_manager,1,1,1,1
 access_laboratory_test_doctor,LaboratoryTestDoctor,model_dom_laboratory_test,dom.group_doctor,1,1,1,0
 access_laboratory_test_manager,LaboratoryTestManager,model_dom_laboratory_test,dom.group_manager,1,1,1,1
 access_laboratory_test_order_manager,LaboratoryTestOrderManager,model_dom_laboratory_test_order,dom.group_manager,1,1,1,1

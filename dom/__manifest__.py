@@ -14,6 +14,7 @@
         "security/ir.model.access.csv",
         "data/dom_sequence.xml",
         "views/doctor_specialization.xml",
+        "views/hospitalization_order.xml",
         "views/laboratory_test.xml",
         "views/laboratory_test_order.xml",
         "views/medical_test.xml",

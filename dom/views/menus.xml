@@ -65,6 +65,15 @@
     />
 
     <menuitem 
+      id="hospitalization_order_menu"
+      name="Hospitalization Orders"
+      web_icon="dom,static/description/hospitalization_icon.png"
+      action="dom.hospitalization_order_action"
+      groups="dom.group_doctor"
+      sequence="105"
+    />
+
+    <menuitem 
       id="configuration_menu"
       name="DOM Configuration"
       web_icon="dom,static/description/configuration_icon.png"

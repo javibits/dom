@@ -1,4 +1,5 @@
 from . import doctor_specialization
+from . import hospitalization_order
 from . import medicine
 from . import laboratory_test
 from . import laboratory_test_order
