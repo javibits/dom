@@ -257,7 +257,7 @@
                         widget="many2many_tags" 
                         attrs="{'invisible': [('medical_test_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}"
                     />
-                    <field name="medical_test_clinical_summary"/>
+                    <field name="medical_test_clinical_summary" attrs="{'readonly': [('state', '!=', 'in_progress')]}"/>
                     <field name="medical_test_order_line_ids" attrs="{'invisible': [('medical_test_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}">
                       <tree editable="bottom">
                           <field name="medical_test_id" options='{"no_open": True}'/>

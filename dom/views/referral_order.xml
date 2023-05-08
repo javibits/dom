@@ -33,11 +33,12 @@
           <sheet>
             <group>
                 <field name="date"/>
-                <field name="patient_id" options='{"no_open": True, "no_create": True}'/>
-                <field name="doctor_id" options='{"no_open": True, "no_create": True}'/>
+                <field name="patient_id" options='{"no_open": True, "no_create": True}' attrs="{'readonly': [('appointment_id', '!=', False)]}"/>
+                <field name="doctor_id" options='{"no_open": True, "no_create": True}' attrs="{'readonly': [('state', 'not in', [False, 'in_progress'])]}"/>
                 <field name="specialization_id" options='{"no_open": True, "no_create": True}'/>
-                <field name="appointment_id" options='{"no_open": True, "no_create": True}' attrs="{'invisible': [('appointment_id', '=', False)]}"/>
-                <field name="note"/>
+                <field name="appointment_id" options='{"no_create": True}' attrs="{'invisible': [('appointment_id', '=', False)]}"/>
+                <field name="state" invisible="True"/>
+                <field name="note" attrs="{'readonly': [('state', 'not in', [False, 'in_progress'])]}"/>
             </group>
           </sheet>
         </form>

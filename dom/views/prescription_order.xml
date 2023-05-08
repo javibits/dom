@@ -31,10 +31,11 @@
         <form>
           <sheet>
             <group>
-                <field name="patient_id" options='{"no_open": True, "no_create": True}'/>
+                <field name="patient_id" options='{"no_open": True, "no_create": True}' attrs="{'readonly': [('appointment_id', '!=', False)]}"/>
                 <field name="date"/>
-                <field name="appointment_id" options='{"no_open": True, "no_create": True}' attrs="{'invisible': [('appointment_id', '=', False)]}"/>
-                <field name="line_ids" widget="one2many">
+                <field name="appointment_id" options='{"no_create": True}' attrs="{'invisible': [('appointment_id', '=', False)]}"/>
+                <field name="state" invisible="True"/>
+                <field name="line_ids" widget="one2many" attrs="{'readonly': [('state', 'not in', [False, 'in_progress'])]}">
                   <tree editable="bottom">
                       <field name="medicine_id" options='{"no_open": True, "no_create": True}'/>
                       <field name="directions"/>

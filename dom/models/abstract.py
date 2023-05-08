@@ -14,9 +14,6 @@ class DOMOrderAbstract(models.AbstractModel):
         "res.partner",
         string=_("Patient"),
         ondelete="cascade",
-        compute="_compute_patient_id_onchange",
-        store=True,
-        readonly=False,
         required=True,
         domain=[("is_patient", "=", True)],
     )
@@ -24,11 +21,6 @@ class DOMOrderAbstract(models.AbstractModel):
         "dom.patient.appointment",
         string=_("Appointment"),
         ondelete="cascade",
+        readonly=True,
     )
-
-    @api.depends("appointment_id")
-    def _compute_patient_id_onchange(self):
-        if self.appointment_id:
-            self.patient_id = self.appointment_id.patient_id
-        else:
-            self.patient_id = None
+    state = fields.Selection(related="appointment_id.state")
