@@ -63,7 +63,7 @@
               <button name="action_open_referral_orders"
                       class="oe_stat_button" icon="fa-handshake-o"
                       type="object">
-                <field name="medical_test_order_count" string="Referral Order(s)" widget="statinfo"/>
+                <field name="referral_order_count" string="Referral Order(s)" widget="statinfo"/>
               </button>
             </div>
             <field name="active" invisible="True" />
