@@ -53,6 +53,7 @@ class MedicalTestOrder(models.Model):
         string=_("Appointment"),
         ondelete="cascade",
     )
+    clinical_summary = fields.Text(string=_("Clinical summary"))
     line_ids = fields.One2many(
         "dom.medical.test.order.line",
         "medical_test_order_id",

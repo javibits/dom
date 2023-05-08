@@ -141,6 +141,10 @@ class PatientAppointment(models.Model):
         string=_("Medical Test Order"),
         ondelete="set null",
     )
+    medical_test_clinical_summary = fields.Text(
+        related="medical_test_order_id.clinical_summary",
+        readonly=False,
+    )
     medical_test_order_line_ids = fields.One2many(
         related="medical_test_order_id.line_ids",
         string=_("Medical Test Order Lines"),
