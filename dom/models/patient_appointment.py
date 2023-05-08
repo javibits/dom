@@ -159,10 +159,22 @@ class PatientAppointment(models.Model):
         "appointment_id",
         string=_("Referral Orders"),
     )
-    hospitalization_order_ids = fields.One2many(
+    hospitalization_order_id = fields.Many2one(
         "dom.hospitalization.order",
-        "appointment_id",
         string=_("Hospitalization Orders"),
+        ondelete="set null",
+    )
+    hospitalization_place = fields.Char(
+        related="hospitalization_order_id.place",
+        readonly=False,
+    )
+    hospitalization_diagnosis = fields.Text(
+        related="hospitalization_order_id.diagnosis",
+        readonly=False,
+    )
+    hospitalization_recommendations = fields.Text(
+        related="hospitalization_order_id.recommendations",
+        readonly=False,
     )
 
     def button_in_progress(self):
@@ -204,6 +216,18 @@ class PatientAppointment(models.Model):
             }
         )
         self.medical_test_order_id = medical_test_order
+
+    def button_create_hospitalization_order(self):
+        hospitalization_order = self.env["dom.hospitalization.order"].create(
+            {
+                "patient_id": self.patient_id.id,
+                "appointment_id": self.id,
+                "place": "",
+                "diagnosis": "",
+                "recommendations": "",
+            }
+        )
+        self.hospitalization_order_id = hospitalization_order
 
     @api.depends("start_time", "end_time")
     def _compute_duration(self):

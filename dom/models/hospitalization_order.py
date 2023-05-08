@@ -9,7 +9,7 @@ class HospitalizationOrder(models.Model):
 
     place = fields.Char(string=_("Place"), required=True)
     diagnosis = fields.Text(string=_("Diagnosis"), required=True)
-    recomendations = fields.Text(string=_("Recomendations"), required=True)
+    recommendations = fields.Text(string=_("Recommendations"), required=True)
 
     def name_get(self):
         res = []

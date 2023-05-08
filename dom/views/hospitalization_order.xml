@@ -38,7 +38,7 @@
                 <field name="state" invisible="True"/>
                 <field name="place" attrs="{'readonly': [('state', 'not in', [False, 'in_progress'])]}"/>
                 <field name="diagnosis" attrs="{'readonly': [('state', 'not in', [False, 'in_progress'])]}"/>
-                <field name="recomendations" attrs="{'readonly': [('state', 'not in', [False, 'in_progress'])]}"/>
+                <field name="recommendations" attrs="{'readonly': [('state', 'not in', [False, 'in_progress'])]}"/>
             </group>
           </sheet>
         </form>

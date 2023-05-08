@@ -277,18 +277,20 @@
                   </tree>
                 </field>
               </page>
-              <page name="hospitalization_orders" string="Hospitalization Orders">
-                <h2 class="my-3">Hospitalization Orders</h2>
-                <field name="hospitalization_order_ids" attrs="{'readonly': [('state', '!=', 'in_progress')]}" context="{'default_patient_id': patient_id}">
-                  <tree editable="bottom">
-                      <field name="date"/>
-                      <field name="appointment_id" invisible="True"/>
-                      <field name="patient_id" invisible="True"/>
-                      <field name="place"/>
-                      <field name="diagnosis"/>
-                      <field name="recomendations"/>
-                  </tree>
-                </field>
+              <page name="hospitalization_order" string="Hospitalization Order">
+                <h2 class="my-3">Hospitalization Order</h2>
+                <field name="hospitalization_order_id" invisible="True"/>
+                <button name="button_create_hospitalization_order"
+                    type="object"
+                    string="Create Hospitalization Order"
+                    attrs="{'invisible': ['|', ('hospitalization_order_id', '!=', False),('state', '!=', 'in_progress')]}"
+                    class="oe_highlight"
+                />
+                <group>
+                  <field name="hospitalization_place" attrs="{'invisible': [('hospitalization_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}"/>
+                  <field name="hospitalization_diagnosis" attrs="{'invisible': [('hospitalization_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}"/>
+                  <field name="hospitalization_recommendations" attrs="{'invisible': [('hospitalization_order_id', '=', False)], 'readonly': [('state', '!=', 'in_progress')]}"/>
+                </group>
               </page>
             </notebook>
           </sheet>
