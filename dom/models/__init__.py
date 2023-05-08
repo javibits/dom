@@ -1,3 +1,4 @@
+from . import abstract
 from . import doctor_specialization
 from . import hospitalization_order
 from . import medicine
