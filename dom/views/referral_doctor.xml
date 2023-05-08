@@ -1,0 +1,32 @@
+<odoo>
+
+    <record id="referral_doctor_tree_view" model="ir.ui.view">
+      <field name="name">dom.referral.doctor.tree</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <tree sample="1" editable="top">
+          <field name="name"/>
+          <field name="specialization_id"/>
+          <field name="phone"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="referral_doctor_action" model="ir.actions.act_window">
+      <field name="name">Doctors</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree</field>
+      <field name="context">{'default_is_doctor': 'True'}</field>
+      <field name="domain">[('is_doctor','=', 'True')]</field>
+      <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'tree', 'view_id': ref('dom.referral_doctor_tree_view')})]"
+      />
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new Doctor
+        </p>
+      </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+
+    <record id="doctor_specialization_tree_view" model="ir.ui.view">
+      <field name="name">dom.doctor.specialization.tree</field>
+      <field name="model">dom.doctor.specialization</field>
+      <field name="arch" type="xml">
+        <tree sample="1" editable="top">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="doctor_specialization_action" model="ir.actions.act_window">
+      <field name="name">Specializations</field>
+      <field name="res_model">dom.doctor.specialization</field>
+      <field name="view_mode">tree</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new Specialization
+        </p>
+      </field>
+    </record>
+
+</odoo>

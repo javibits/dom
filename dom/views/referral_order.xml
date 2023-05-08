@@ -1,0 +1,59 @@
+<odoo>
+    <record id="referral_order_search_view" model="ir.ui.view">
+      <field name="name">dom.referral.order.search.view</field>
+      <field name="model">dom.referral.order</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="patient_id"/>
+          <field name="doctor_id"/>
+          <field name="date"/>
+          <filter string="From Appointment" name="from_appointment" domain="[('appointment_id', '!=', False)]"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="referral_order_tree_view" model="ir.ui.view">
+      <field name="name">dom.referral.order.tree</field>
+      <field name="model">dom.referral.order</field>
+      <field name="arch" type="xml">
+        <tree sample="1">
+          <field name="date"/>
+          <field name="patient_id"/>
+          <field name="doctor_id"/>
+          <field name="appointment_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="referral_order_form_view" model="ir.ui.view">
+      <field name="name">dom.referral.order.form</field>
+      <field name="model">dom.referral.order</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="date"/>
+                <field name="patient_id" options='{"no_open": True, "no_create": True}'/>
+                <field name="doctor_id" options='{"no_open": True, "no_create": True}'/>
+                <field name="specialization_id" options='{"no_open": True, "no_create": True}'/>
+                <field name="appointment_id" options='{"no_open": True, "no_create": True}' attrs="{'invisible': [('appointment_id', '=', False)]}"/>
+                <field name="note"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="referral_order_action" model="ir.actions.act_window">
+      <field name="name">Referral Orders</field>
+      <field name="res_model">dom.referral.order</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[("patient_id.active", "=", True)]</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add a new record
+        </p>
+      </field>
+    </record>
+
+</odoo>

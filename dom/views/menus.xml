@@ -16,6 +16,7 @@
       web_icon="dom,static/description/patient_icon.png"
       action="dom.patient_action"
       groups="dom.group_doctor"
+      sequence="100"
     />
 
     <menuitem 
@@ -24,6 +25,7 @@
       web_icon="dom,static/description/appointment_icon.png"
       action="dom.patient_appointment_action"
       groups="dom.group_doctor"
+      sequence="101"
     />
 
     <menuitem 
@@ -32,6 +34,7 @@
       web_icon="dom,static/description/prescription_icon.png"
       action="dom.prescription_order_action"
       groups="dom.group_doctor"
+      sequence="102"
     />
 
     <menuitem 
@@ -40,6 +43,7 @@
       web_icon="dom,static/description/laboratory_test_icon.png"
       action="dom.laboratory_test_order_action"
       groups="dom.group_doctor"
+      sequence="103"
     />
 
     <menuitem 
@@ -48,6 +52,16 @@
       web_icon="dom,static/description/medical_test_icon.png"
       action="dom.medical_test_order_action"
       groups="dom.group_doctor"
+      sequence="104"
+    />
+
+    <menuitem 
+      id="referral_order_menu"
+      name="Referral Orders"
+      web_icon="dom,static/description/referral_icon.png"
+      action="dom.referral_order_action"
+      groups="dom.group_doctor"
+      sequence="105"
     />
 
     <menuitem 
@@ -55,6 +69,7 @@
       name="DOM Configuration"
       web_icon="dom,static/description/configuration_icon.png"
       groups="dom.group_doctor"
+      sequence="106"
     />
 
     <menuitem 
@@ -175,5 +190,32 @@
       groups="dom.group_doctor"
       sequence="20"
     />
+
+    <menuitem
+      id="referral_configuration_menu"
+      name="Referrals"
+      parent="dom.configuration_menu"
+      groups="dom.group_doctor"
+      sequence="70"
+    />
+
+    <menuitem 
+      id="doctor_specialization_menu"
+      name="Specializations"
+      parent="dom.referral_configuration_menu"
+      action="dom.doctor_specialization_action"
+      groups="dom.group_doctor"
+      sequence="10"
+    />
+
+    <menuitem
+      id="referral_doctor_menu"
+      name="Doctors"
+      parent="dom.referral_configuration_menu"
+      action="dom.referral_doctor_action"
+      groups="dom.group_doctor"
+      sequence="20"
+    />
+
   </data>
 </odoo>

@@ -1,4 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doctor_specialization_doctor,DoctorSpecializationDoctor,model_dom_doctor_specialization,dom.group_doctor,1,1,1,1
+access_doctor_specialization_manager,DoctorSpecializationManager,model_dom_doctor_specialization,dom.group_manager,1,1,1,0
 access_medicine_doctor,MedicineDoctor,model_dom_medicine,dom.group_doctor,1,1,1,0
 access_medicine_manager,MedicineManager,model_dom_medicine,dom.group_manager,1,1,1,1
 access_laboratory_test_doctor,LaboratoryTestDoctor,model_dom_laboratory_test,dom.group_doctor,1,1,1,0
@@ -37,3 +39,5 @@ access_prescription_order_doctor,PatientPrescriptionDoctor,model_dom_prescriptio
 access_prescription_order_manager,PatientPrescriptionManager,model_dom_prescription_order,dom.group_manager,1,1,1,1
 access_prescription_order_line_doctor,PatientPrescriptionLineDoctor,model_dom_prescription_order_line,dom.group_doctor,1,1,1,1
 access_prescription_order_line_manager,PatientPrescriptionLineManager,model_dom_prescription_order_line,dom.group_manager,1,1,1,1
+access_referral_order_doctor,ReferralOrderDoctor,model_dom_referral_order,dom.group_doctor,1,1,1,1
+access_referral_order_manager,ReferralOrderManager,model_dom_referral_order,dom.group_manager,1,1,1,1

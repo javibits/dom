@@ -265,6 +265,18 @@
                     </field>
                 </group>
               </page>
+              <page name="referral_orders" string="Referral Orders">
+                <h2 class="my-3">Referral Orders</h2>
+                <field name="referral_order_ids" attrs="{'readonly': [('state', '!=', 'in_progress')]}" context="{'default_patient_id': patient_id}">
+                  <tree editable="bottom">
+                      <field name="date"/>
+                      <field name="doctor_id" options='{"no_open": True}'/>
+                      <field name="appointment_id" invisible="True"/>
+                      <field name="patient_id" invisible="True"/>
+                      <field name="note"/>
+                  </tree>
+                </field>
+              </page>
             </notebook>
           </sheet>
         </form>

@@ -1,3 +1,4 @@
+from . import doctor_specialization
 from . import medicine
 from . import laboratory_test
 from . import laboratory_test_order
@@ -10,4 +11,5 @@ from . import patient_background
 from . import patient_diagnosis
 from . import patient_family
 from . import prescription_order
+from . import referral_order
 from . import res_config_settings

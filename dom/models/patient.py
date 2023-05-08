@@ -122,6 +122,10 @@ class Patient(models.Model):
         string=_("Medical Test Count"),
         compute="_compute_medical_test_order_count",
     )
+    referral_order_count = fields.Integer(
+        string=_("Referral Order Count"),
+        compute="_compute_referral_order_count",
+    )
 
     @api.depends("dob")
     def _compute_age(self):
@@ -226,6 +230,12 @@ class Patient(models.Model):
                 "dom.medical.test.order"
             ].search_count([("patient_id", "=", self.id)])
 
+    def _compute_referral_order_count(self):
+        for record in self:
+            record.referral_order_count = self.env["dom.referral.order"].search_count(
+                [("patient_id", "=", self.id)]
+            )
+
     def action_open_appointments(self):
         return {
             "name": "Appointments",
@@ -263,6 +273,16 @@ class Patient(models.Model):
             "context": {"default_patient_id": self.id},
             "type": "ir.actions.act_window",
             "res_model": "dom.medical.test.order",
+            "view_mode": "tree,form",
+        }
+
+    def action_open_referral_orders(self):
+        return {
+            "name": "Referral Orders",
+            "domain": [("patient_id", "=", self.id)],
+            "context": {"default_patient_id": self.id},
+            "type": "ir.actions.act_window",
+            "res_model": "dom.referral.order",
             "view_mode": "tree,form",
         }
 
