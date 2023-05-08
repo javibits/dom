@@ -1,4 +1,4 @@
-from odoo import _, api, models, fields
+from odoo import _, models, fields
 
 
 class DOMOrderAbstract(models.AbstractModel):
